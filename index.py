@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #coding:utf-8
 
-from bottle import route,default_app,install,run,request
+from bottle import route,default_app,install,run,request,static_file
 from beaker.middleware import SessionMiddleware
 from bottle.ext import sqlalchemy
 from sqlalchemy import create_engine,Column,Integer,Sequence,String
@@ -48,16 +48,20 @@ def index():
     ip=open("ip.txt","a")
     ip.write(request.remote_addr+'\n')
     ip.close()
-    
+
     return "客观里面请~"
 
-#模板测试
-@route('/test')
-@view('App/View/test.tpl')
-def test():
+#登陆模板
+@route('/Login')
+@view('App/View/Login/index.tpl')
+def Login():
     navigation=[{"href":"/about","caption":"关于"},{"href":"/bbs","caption":"论坛"},{"href":"/blog","caption":"论坛"}]
     return {'navigation':navigation,'a_variable':"jack"}
-    
+
+#静态文件资源模板
+@route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif]$>')
+def Public(filename):
+    return static_file(filename, root="Public")
 
 run(app=app,host="127.0.0.1",debug="True",port="8088")
 #run(app=app,host="127.0.0.1",server='gunicorn',port="8088")

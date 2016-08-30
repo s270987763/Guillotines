@@ -3,4 +3,4 @@ pip install beaker
 pip install pymysql
 pip install sqlalchemy
 pip install bottle_sqlalchemy
-pip install Jinja2
+pip install jinja2
