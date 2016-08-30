@@ -12,7 +12,8 @@ from bottle import jinja2_view as view
 from bottle import redirect,static_file
 from App.Common.utils import makePass,randSalt,checkxss,checkuname,checktel,checkemail
 import re,string,logging,json
-from bottle import request
+from bottle import request,template
+
 
 #设置session参数
 session_opts = {
@@ -67,9 +68,9 @@ def check(db):
     checkLogin(db,data)
 
 #Main路由
-@route('/Main/<path:path>')
+@route('/Main/<path>')
 def MainPath(path):
-    view('/App/View/Main/'+path+'.tpl')
+    view('/App/View/Main/'+path)
 
 #静态文件资源模板
 @route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif]$>')

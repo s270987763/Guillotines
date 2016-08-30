@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-test
-=======
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -49,4 +46,3 @@ test
 	var myLine = new Chart(document.getElementById("Statistics").getContext("2d")).Line(lineChartData);
 </script>
 </html>
->>>>>>> origin/master
