@@ -1,2 +1,5 @@
 pip install bottle
 pip install beaker
+pip install pymysql
+pip install sqlalchemy
+pip install bottle_sqlalchemy
