@@ -8,6 +8,8 @@ from sqlalchemy import create_engine,Column,Integer,Sequence,String
 from sqlalchemy.ext.declarative import declarative_base
 from beaker.middleware import SessionMiddleware
 from App.Model.models import ShellDbConfig,User,WebShell
+from bottle import jinja2_view as view
+from bottle import redirect,static_file
 
 #设置session参数
 session_opts = {
@@ -48,6 +50,14 @@ def index():
     ip.close()
     
     return "客观里面请~"
+
+#模板测试
+@route('/test')
+@view('App/View/test.tpl')
+def test():
+    navigation=[{"href":"/about","caption":"关于"},{"href":"/bbs","caption":"论坛"},{"href":"/blog","caption":"论坛"}]
+    return {'navigation':navigation,'a_variable':"jack"}
+    
 
 run(app=app,host="127.0.0.1",debug="True",port="8088")
 #run(app=app,host="127.0.0.1",server='gunicorn',port="8088")
