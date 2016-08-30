@@ -10,6 +10,7 @@ from beaker.middleware import SessionMiddleware
 from App.Model.models import ShellDbConfig,User,WebShell
 from bottle import jinja2_view as view
 from bottle import redirect,static_file
+from App.Common.utils import makePass,randSalt
 
 #设置session参数
 session_opts = {
@@ -55,8 +56,7 @@ def index():
 @route('/Login')
 @view('App/View/Login/index.tpl')
 def Login():
-    navigation=[{"href":"/about","caption":"关于"},{"href":"/bbs","caption":"论坛"},{"href":"/blog","caption":"论坛"}]
-    return {'navigation':navigation,'a_variable':"jack"}
+    pass
 
 #静态文件资源模板
 @route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif]$>')
