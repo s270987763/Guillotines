@@ -9,8 +9,6 @@ from sqlalchemy.ext.declarative import declarative_base
 from beaker.middleware import SessionMiddleware
 from App.Model.models import ShellDbConfig,User,WebShell
 
-
-
 #设置session参数
 session_opts = {
     'session.type':'file',               # 以文件的方式保存session
