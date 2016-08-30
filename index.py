@@ -17,6 +17,7 @@ session_opts = {
     'sessioni.auto':True
     }
 
+#连接数据库
 engine=create_engine('mysql+pymysql://root:root@localhost:3306/guillotines?charset=utf8')
 
 app=default_app()
@@ -33,6 +34,7 @@ plugin = sqlalchemy.Plugin(
     use_kwargs=False # If it is true and keyword is not defined, plugin uses **kwargs argument to inject session database (default False).
 )
 
+#安装sqlalchemy插件
 install(plugin)
 
 
