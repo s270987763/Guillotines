@@ -32,7 +32,7 @@
 			url: '/Api/checkLogin',
 			type: 'post',
 			dataType: 'json',
-			data: {email: user_email,password:user_password},
+			data: {email: user_email,password.val():user_password.val()},
 		})
 		.done(function(data){
 			if(data.type == "error"){
@@ -40,6 +40,9 @@
 				return false;
 			}
 			window.location.href = "/Main";
+		})
+		.fail(function(data){
+			console.log(data)
 		})
 	})
 </script>
