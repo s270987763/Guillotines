@@ -10,7 +10,9 @@ from beaker.middleware import SessionMiddleware
 from App.Model.models import ShellDbConfig,User,WebShell
 from bottle import jinja2_view as view
 from bottle import redirect,static_file
-from App.Common.utils import makePass,randSalt
+from App.Common.utils import makePass,randSalt,checkxss,checkuname,checktel,checkemail
+import re,string,logging,json
+from bottle import request
 
 #设置session参数
 session_opts = {
@@ -52,11 +54,18 @@ def index():
 
     return "客观里面请~"
 
-#登陆模板
+#登陆
 @route('/Login')
 @view('App/View/Login/index.tpl')
 def Login():
     pass
+
+#登陆验证
+@route('/Api/checkLogin/',method=['POST','GET'])
+def check(db):
+    data=request.body
+    checkLogin(db,data)
+    
 
 #静态文件资源模板
 @route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif]$>')
