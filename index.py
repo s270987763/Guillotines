@@ -1,9 +1,13 @@
+#!/usr/bin/env python3
+#coding:utf-8
+
 from bottle import route,default_app,install,run
 from beaker.middleware import SessionMiddleware
 from bottle.ext import sqlalchemy
 from sqlalchemy import create_engine,Column,Integer,Sequence,String
 from sqlalchemy.ext.declarative import declarative_base
 from beaker.middleware import SessionMiddleware
+from App.Model.models import ShellDbConfig,User,WebShell
 
 
 
