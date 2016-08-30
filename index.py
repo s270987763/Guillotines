@@ -63,5 +63,11 @@ def Login():
 def Public(filename):
     return static_file(filename, root="Public")
 
+#Main路由
+@route('/Main/<path:path>')
+def MainPath(path):
+    view('/App/View/Main/'+path+'.tpl')
+    
+
 run(app=app,host="127.0.0.1",debug="True",port="8088")
 #run(app=app,host="127.0.0.1",server='gunicorn',port="8088")
