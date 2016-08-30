@@ -59,12 +59,13 @@ def Login():
     pass
 
 #Main路由
-@route('/Main/<path:path>')
-def MainPath(path):
-    view('/App/View/Main/'+path+'.tpl')
+@route('/Main')
+@view('App/View/Main/index.tpl')
+def Main():
+    pass
 
 #静态文件资源模板
-@route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif]$>')
+@route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif|eot|svg|ttf|woff|woff2|otf]$>')
 def Public(filename):
     return static_file(filename, root="Public")
 
