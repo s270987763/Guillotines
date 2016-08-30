@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 #coding:utf-8
 
-from bottle import route,default_app,install,run
+from bottle import route,default_app,install,run,request
 from beaker.middleware import SessionMiddleware
 from bottle.ext import sqlalchemy
 from sqlalchemy import create_engine,Column,Integer,Sequence,String
@@ -39,9 +39,15 @@ install(plugin)
 
 
 
+#记录访客IP
 @route('/')
 def index():
-    return "index"
+    uinfo=list()
+    ip=open("ip.txt","a")
+    ip.write(request.remote_addr+'\n')
+    ip.close()
+    
+    return "客观里面请~"
 
 run(app=app,host="127.0.0.1",debug="True",port="8088")
 #run(app=app,host="127.0.0.1",server='gunicorn',port="8088")
