@@ -52,8 +52,12 @@ def index():
     ip=open("ip.txt","a")
     ip.write(request.remote_addr+'\n')
     ip.close()
-
-    return redirect('/Login')
+    s=request.environ.get('beaker.session')
+    email=s.get('email',None)
+    if not email:
+        return redirect('/Login')
+    else:
+        redirect('/Main/index')
 
 #icon图标
 @route('/favicon.ico')
