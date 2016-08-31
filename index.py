@@ -7,7 +7,6 @@ from bottle.ext import sqlalchemy
 from sqlalchemy import create_engine,Column,Integer,Sequence,String
 from sqlalchemy.ext.declarative import declarative_base
 from beaker.middleware import SessionMiddleware
-from App.Model.models import ShellDbConfig,User,WebShell
 from bottle import jinja2_view as view
 from bottle import redirect,static_file
 from App.Common.utils import makePass,randSalt,checkxss,checkuname,checktel,checkemail
@@ -71,8 +70,11 @@ def Login():
 #登陆验证
 @route('/Api/checkLogin',method="POST")
 def check(db):
-    data=request.body
-    checkLogin(db,data)
+    email=request.POST.get('email')
+    pwd=request.POST.get('password')
+    info=checkLogin(db,email,pwd)
+    info={"type":info}
+    return info
 
 #Main路由
 @route('/Main/<path>')

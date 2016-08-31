@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
 #coding:utf-8
-from App.Common.utils import checkxss,checkemail
-def checkLogin(db,data):
+from App.Common.utils import checkxss,checkemail,makePass
+from App.Model.models import User
+def checkLogin(db,email,pwd):
     try:
-        data=json.loads(data)
-        email=checkemail(data["email"])
-        pwd=makePass(data["password"])
+        email=checkemail(email)
         
+        pwd=makePass(pwd)
+        print(pwd)
         user=db.query(User).filter(User.EMAIL==email).first()
         if user:
             salt=user.SALT
             md5pass=makePass(pwd+salt)
+            print(md5pass)
             if user.PWD==md5pass:
-                return {"type":"success"}
+                return "sucess"
             else:
-                {"type":"error"}
+                return "error"
         else:
-            {"type":"error"}
+            return "error"
     except Exception as e:
-        return {"error":e}
+        return e

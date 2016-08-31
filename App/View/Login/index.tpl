@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -39,7 +39,7 @@
 				swal("Error", "账号或密码错误", "error");
 				return false;
 			}
-			window.location.href = "/Main";
+			window.location.href = "/Main/index";
 		})
 		.fail(function(data){
 			console.log(data)

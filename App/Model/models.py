@@ -1,6 +1,6 @@
 ﻿#!/usr/bin/env python3
 #coding:utf-8
-from sqlalchemy import create_engine,Column,Integer,Sequence,String,DateTime,Time,Float
+from sqlalchemy import create_engine,Column,Integer,Sequence,String,DateTime,Float
 from sqlalchemy.ext.declarative import declarative_base
 
 
@@ -12,7 +12,7 @@ class ShellDbConfig(Base):
     HOST=Column(String(128))
     PORT=Column(String(5))
     PWD=Column(String(32))
-    CREATE_TIME=Column(Time)
+    CREATE_TIME=Column(DateTime)
     
     def __init__(self,host,port,pwd):
         self.HOST=host
@@ -31,7 +31,7 @@ class User(Base):
     PWD=Column(String(32))
     SALT=Column(String(10))
     UTYPE=Column(String(10))
-    CREATE_TIME=Column(Time)
+    CREATE_TIME=Column(DateTime)
     
     def __init__(self,name,email,pwd,salt,utype):
         self.NAME=name
@@ -53,7 +53,7 @@ class WebShell(Base):
     IP=Column(String(128))
     IP_ADDRESS=Column(String(255))
     CATEGORY=Column(String(6))
-    CREATE_TIME=Column(Time)
+    CREATE_TIME=Column(DateTime)
     HTTPCODE=Column(String(3))
     BR=Column(Integer)
     PR=Column(Integer)
