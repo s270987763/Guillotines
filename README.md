@@ -48,7 +48,7 @@ www 根目录
 > API接口说明
 
 #### 获取webshell总数
-```
+```javascript
 地址:   /RootApi/webshell/total
 方式:   GET
 参数:   无
@@ -58,7 +58,7 @@ www 根目录
 ```
 
 #### 获取webshell列表
-```
+```javascript
 地址:   /RootApi/webshell/list
 方式:   POST
 参数:   无
@@ -84,7 +84,7 @@ www 根目录
 ```
 
 #### 添加webshell
-```
+```javascript
 地址:   /RootApi/webshell/add
 方式:   POST
 参数:
@@ -102,7 +102,7 @@ www 根目录
 
 #### 注意事项
 只有当API的类型为`Json`格式时才会有错误信息，而且所有的`错误信息`都按照以下格式。
-```
+```javascript
 {
 	'type':'error',
 	'info':'错误信息'
