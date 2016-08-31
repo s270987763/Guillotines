@@ -13,6 +13,7 @@ from bottle import redirect,static_file
 from App.Common.utils import makePass,randSalt,checkxss,checkuname,checktel,checkemail
 import re,string,logging,json
 from bottle import request,template
+from App.Controller.userscontroller import checkLogin
 
 
 #设置session参数
@@ -68,7 +69,7 @@ def Login():
     pass
 
 #登陆验证
-@route('/Api/checkLogin/',method=['POST','GET'])
+@route('/Api/checkLogin',method="POST")
 def check(db):
     data=request.body
     checkLogin(db,data)
