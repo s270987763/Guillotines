@@ -1,0 +1,146 @@
+div.col-xs-9 .btn-group button {
+  color: #1997c6;
+  background-color: transparent;
+  border-color: #1997c6;
+}
+div.col-xs-9 .btn-group button:focus,
+div.col-xs-9 .btn-group button:hover,
+div.col-xs-9 .btn-group button:active {
+  color: #ffffff;
+  background-color: #1997c6;
+  outline: none;
+}
+div.col-xs-9 .table {
+  margin-top: 20px;
+  color: #cfd2da;
+}
+div.col-xs-9 .table thead tr th {
+  border-bottom: 2px solid #434857;
+}
+div.col-xs-9 .table tbody tr th {
+  width: 7%;
+}
+div.col-xs-9 .table tbody tr td:first-of-type {
+  width: 55%;
+  cursor: pointer;
+}
+div.col-xs-9 .table tbody tr td:nth-of-type(2) {
+  width: 10%;
+}
+div.col-xs-9 .table tbody tr td:nth-of-type(3) {
+  width: 12%;
+}
+div.col-xs-9 .table tbody tr td:last-of-type {
+  text-align: center;
+  width: 5%;
+}
+div.col-xs-9 .table tbody tr td:last-of-type:focus,
+div.col-xs-9 .table tbody tr td:last-of-type:hover,
+div.col-xs-9 .table tbody tr td:last-of-type:active {
+  color: #E4D836;
+  cursor: pointer;
+}
+div.col-xs-9 .table tbody tr td:last-of-type button {
+  border-color: transparent;
+  color: #fff;
+}
+div.col-xs-9 .table tbody tr td:last-of-type button:focus,
+div.col-xs-9 .table tbody tr td:last-of-type button:hover,
+div.col-xs-9 .table tbody tr td:last-of-type button:active {
+  background-color: transparent;
+  border-color: transparent;
+  color: #fff;
+}
+div.col-xs-9 .table tbody tr td:last-of-type ul {
+  min-width: 110px;
+  background-color: #252831;
+}
+div.col-xs-9 .table tbody tr td:last-of-type ul li a {
+  color: #fff;
+}
+div.col-xs-9 .table tbody tr td:last-of-type ul li a:not(span) {
+  letter-spacing: 2px;
+}
+div.col-xs-9 .table tbody tr td:last-of-type ul li a:focus,
+div.col-xs-9 .table tbody tr td:last-of-type ul li a:hover,
+div.col-xs-9 .table tbody tr td:last-of-type ul li a:active {
+  background-color: #29A8DA !important;
+  color: #252830 !important;
+}
+div.col-xs-9 .table tbody tr td:last-of-type ul li a span {
+  padding-right: 10px;
+}
+div.col-xs-9 .table tbody tr th,
+div.col-xs-9 .table tbody tr td {
+  border-top: 1px solid #434857;
+}
+div.col-xs-9 .table tbody tr:focus,
+div.col-xs-9 .table tbody tr:hover,
+div.col-xs-9 .table tbody tr:active {
+  background-color: #434857;
+}
+div.col-xs-9 .button-info-refresh {
+  margin-right: 10px;
+  cursor: pointer;
+}
+div.col-xs-9 .button-info-refresh span {
+  margin-right: 0;
+}
+.sweet-alert {
+  padding: 17px 44px;
+  overflow: initial;
+}
+.sweet-alert p input:nth-of-type(2) {
+  width: 44.47%;
+}
+.sweet-alert p input:nth-of-type(3) {
+  margin-left: 4px;
+  width: 27%;
+}
+.sweet-alert p button {
+  float: inherit;
+  margin-top: 10px;
+  margin-left: 3px;
+  padding: 4px 12px;
+  width: 27%;
+  cursor: pointer;
+}
+.sweet-alert p button:last-of-type {
+  margin-left: 3px;
+}
+.sweet-alert p ul {
+  position: absolute;
+  top: 110px;
+  right: 0px;
+  padding-left: 0px;
+  width: 27%;
+  text-align: left;
+  list-style: none;
+  background-color: #434857;
+  border: 1px solid #434857;
+  border-radius: 4px;
+  z-index: 1;
+}
+.sweet-alert p ul:first-of-type {
+  right: 109px;
+  width: 26.8%;
+}
+.sweet-alert p ul li {
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 5px 0;
+  cursor: pointer;
+}
+.sweet-alert fieldset {
+  clear: both;
+}
+.sweet-alert fieldset .show {
+  display: none !important;
+}
+.sweet-alert .sa-error-container {
+  letter-spacing: 2px;
+  background-color: transparent !important;
+}
+.alert-input {
+  width: 100%;
+}

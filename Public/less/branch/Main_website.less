@@ -1,0 +1,155 @@
+div.col-xs-9{
+	.btn-group{
+		button{
+			color: #1997c6;
+			background-color: transparent;
+			border-color: #1997c6;
+			&:focus,&:hover,&:active{
+				color: #ffffff;
+				background-color: #1997c6;
+				outline: none;
+			}
+		}
+	}
+	.table{
+		margin-top: 20px;
+		color:#cfd2da;
+		thead{
+			tr{
+				th{
+					border-bottom: 2px solid #434857;
+				}
+			}
+		}
+		tbody{
+			tr{
+				th{
+					width: 7%;
+				}
+				td{
+					&:first-of-type{
+						width:55%;
+						cursor: pointer;
+					}
+					&:nth-of-type(2){
+						width: 10%;
+					}
+					&:nth-of-type(3){
+						width: 12%;
+					}
+					&:last-of-type{
+						text-align: center;
+						width: 5%;
+						&:focus,&:hover,&:active{
+							color: #E4D836;
+							cursor: pointer;
+						}
+						button{
+						    border-color: transparent;
+							color: #fff;
+							&:focus,&:hover,&:active{
+								background-color: transparent;
+								border-color: transparent;
+								color: #fff;
+							}
+						}
+						ul{
+							min-width: 110px;
+							background-color: #252831;
+							li{
+								a{
+									color: #fff;
+									&:not(span){
+										letter-spacing: 2px;
+									}
+									&:focus,&:hover,&:active{
+										background-color: #29A8DA !important;
+										color: #252830 !important;
+									}
+									span{
+										padding-right: 10px;
+									}
+								}
+
+							}
+						}
+					}
+				}
+				th,td{
+					border-top: 1px solid #434857;
+				}
+				&:focus,&:hover,&:active{
+					background-color: #434857;
+				}
+			}
+		}
+	}
+	.button-info-refresh{
+		margin-right: 10px;
+		cursor: pointer;
+		span{
+			margin-right: 0;
+		}
+	}
+}
+.sweet-alert{
+	padding: 17px 44px;
+	overflow:initial;
+	p{
+		input:nth-of-type(2){
+			width: 44.47%;
+		}
+		input:nth-of-type(3){
+			margin-left: 4px;
+			width: 27%;
+		}
+		button{
+			float: inherit;
+			margin-top: 10px;
+			margin-left:3px;
+			padding: 4px 12px;
+			width: 27%;
+			cursor: pointer;
+			&:last-of-type{
+				margin-left: 3px;
+			}
+		}
+		ul{
+			position: absolute;
+			top: 110px;
+    		right: 0px;
+			padding-left: 0px;
+			width: 27%;
+			text-align: left;
+			list-style: none;
+			background-color: #434857;
+			border: 1px solid #434857;
+			border-radius: 4px;
+			z-index: 1;
+			&:first-of-type{
+				right: 109px;
+				width: 26.8%;
+			}
+			li{
+				text-align: center;
+				letter-spacing: 1px;
+				padding: 5px 0;
+				cursor: pointer;
+			}
+		}
+	}
+	fieldset{
+		clear: both;
+		.show{
+
+			display: none !important;
+		}
+	}
+	.sa-error-container{
+		letter-spacing:2px;
+		background-color:transparent !important;
+	}
+}
+.alert-input{
+	width: 100%;
+}

@@ -20,7 +20,7 @@
 		      		</button>
 		    	</form>
 		    	<li class="nav-list-span">功能列表</li>
-		        <li><a href="/Main">首页</a></li>
+		        <li><a href="/Main/index">首页</a></li>
 		        <li><a href="/Main/website">受控站点</a></li>
 		        <li><a href="/Main/updata">更新站点</a></li>
 		        <li><a href="/Main/operation">统一操作</a></li>
