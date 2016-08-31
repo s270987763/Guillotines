@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 #coding:utf-8
 
-from bottle import route,default_app,install,run,request,static_file
+from Core.bottle import route,default_app,install,run,request,static_file
 from beaker.middleware import SessionMiddleware
-from bottle.ext import sqlalchemy
+from Core.bottle.ext import sqlalchemy
 from sqlalchemy import create_engine,Column,Integer,Sequence,String
 from sqlalchemy.ext.declarative import declarative_base
 from beaker.middleware import SessionMiddleware
-from bottle import jinja2_view as view
-from bottle import redirect,static_file
+from Core.bottle import jinja2_view as view
+from Core.bottle import redirect,static_file
 from App.Common.utils import makePass,randSalt,checkxss,checkuname,checktel,checkemail
 import re,string,logging,json
-from bottle import request,template
+from Core.bottle import request,template
 from App.Controller.userscontroller import checkLogin
+from App.Conf.conf import dbconfig
 
 
 #设置session参数
@@ -24,7 +25,7 @@ session_opts = {
     }
 
 #连接数据库
-engine=create_engine('mysql+pymysql://root:741521@localhost:3306/gu?charset=utf8')
+engine=dbconfig()
 
 app=default_app()
 app = SessionMiddleware(app, session_opts)
