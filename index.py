@@ -24,7 +24,7 @@ session_opts = {
     }
 
 #连接数据库
-engine=create_engine('mysql+pymysql://root:root@localhost:3306/guillotines?charset=utf8')
+engine=create_engine('mysql+pymysql://root:741521@localhost:3306/gu?charset=utf8')
 
 app=default_app()
 app = SessionMiddleware(app, session_opts)
@@ -63,8 +63,8 @@ def index():
 @route('/favicon.ico')
 def icon():
     return static_file("favicon.ico",root="Public")
-    
-    
+
+
 #登陆
 @route('/Login')
 @view('App/View/Login/index.tpl')
@@ -91,7 +91,7 @@ def MainPath(path):
     email=s.get('email',None)
     if not email:
         return redirect('/Login')
-    return template('App/view/Main/'+path+'.tpl')
+    return template('App/View/Main/'+path+'.tpl')
 
 
 #静态文件资源模板

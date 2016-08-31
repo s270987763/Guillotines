@@ -1,4 +1,4 @@
-#!/home/black-hole/Black-hole/env/bottleweb/bottleenv/bin/python3
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Bottle is a fast and simple micro-framework for small web applications. It
@@ -3651,7 +3651,7 @@ jinja2_view = functools.partial(view, template_adapter=Jinja2Template)
 ###############################################################################
 
 
-TEMPLATE_PATH = ['./', './views/']
+TEMPLATE_PATH = ['./', './views/','./App/View/']
 TEMPLATES = {}
 DEBUG = False
 NORUN = False # If set, run() does nothing. Used by load_app()

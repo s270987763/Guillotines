@@ -1,5 +1,5 @@
 /*
-	在页面里添加左导航栏
+	在页面里对导航栏进行hover
 */
 $(document).ready(function($){
 	switch(window.location.href.split("/")[4]){
