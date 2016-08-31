@@ -1,26 +1,15 @@
-/*
-*	获取webshell列表
-*   /Api/RootApi/webshell接收method参数的值为list时，返回的json数据格式：
-   	{
-		'type':'success',
-		'info':{
-			'id':'第几个webshell（从1开始）',
-			'url':'webshell的url',
-			'category':'webshell属于哪个程序（PHP、ASP、JSP、ASPX）',
-			'time':'此条webshell的创建时间'
-		}
-    }
-*	写好后，请把154行的注释去掉
-*/
 function webshellList(){
 	$.ajax({
-		url: '/Api/RootApi/webshell',
+		url: '/RootApi/webshell/list',
 		type: 'post',
 		dataType: 'json',
-		data: {method: 'list'},
 	})
 	.done(function(data){
-		$(".table tbody").append('<tr><th>' + json.info.id + '</th><td>' + json.info.url + '</td><td>' + json.info.category + '</td><td>' + json.info.time + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
+		if(data.type == "success"){
+			for(var i = 0;i < data.info.length;i++){
+					$(".table tbody").append('<tr><th>' + json.info[i].id + '</th><td>' + json.info[i].url + '</td><td>' + json.info[i].category + '</td><td>' + json.info[i].time + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
+			}
+		}
 	})
 }
 /*
