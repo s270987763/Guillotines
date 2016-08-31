@@ -78,8 +78,9 @@ def check(db):
 def MainPath(path):
     return template('App/view/Main/'+path+'.tpl')
 
+
 #静态文件资源模板
-@route('/Public/<filename:re:.*.[css|js||png|ico|jpg|jpeg|gif]$>')
+@route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif|eot|svg|ttf|woff|woff2|otf]$>')
 def Public(filename):
     return static_file(filename, root="Public")
 
