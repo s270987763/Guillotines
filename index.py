@@ -53,7 +53,7 @@ def index():
     ip.write(request.remote_addr+'\n')
     ip.close()
 
-    return "客观里面请~"
+    return redirect('/Login')
 
 #icon图标
 @route('/favicon.ico')
@@ -73,12 +73,20 @@ def check(db):
     email=request.POST.get('email')
     pwd=request.POST.get('password')
     info=checkLogin(db,email,pwd)
+    if info=="sucess":
+        s=request.environ.get('beaker.session')
+        s['email']=email
+        s.save()
     info={"type":info}
     return info
 
 #Main路由
 @route('/Main/<path>')
 def MainPath(path):
+    s=request.environ.get('beaker.session')
+    email=s.get('email',None)
+    if not email:
+        return redirect('/Login')
     return template('App/view/Main/'+path+'.tpl')
 
 
