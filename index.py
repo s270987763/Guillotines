@@ -70,7 +70,7 @@ def check(db):
 #Main路由
 @route('/Main/<path>')
 def MainPath(path):
-    view('/App/View/Main/'+path)
+    view('./App/View/Main/'+path)
 
 #静态文件资源模板
 @route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif]$>')
