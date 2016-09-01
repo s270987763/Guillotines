@@ -91,22 +91,22 @@ div.col-xs-9 .button-info-refresh span {
   overflow: initial;
 }
 .sweet-alert p input:nth-of-type(2) {
-  width: 44.47%;
+  width: 70%;
 }
 .sweet-alert p input:nth-of-type(3) {
   margin-left: 4px;
   width: 27%;
 }
 .sweet-alert p button {
-  float: inherit;
-  margin-top: 10px;
-  margin-left: 3px;
-  padding: 4px 12px;
-  width: 27%;
+  display: inline-block;
+  margin-right: 0;
+  padding: 10px 0;
+  width: 28.6%;
+  background-color: #434857;
   cursor: pointer;
 }
-.sweet-alert p button:last-of-type {
-  margin-left: 3px;
+.sweet-alert p button:hover {
+  background-color: #434857;
 }
 .sweet-alert p ul {
   position: absolute;

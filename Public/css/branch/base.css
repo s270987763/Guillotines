@@ -119,8 +119,10 @@ ul.nav-tabs > span:first-child {
   color: #fff;
 }
 .sweet-alert p input {
+  display: inline-block;
   color: #ffffff;
   border: none;
+  height: 39px;
   background-color: #434857;
   box-shadow: none;
   outline: none;

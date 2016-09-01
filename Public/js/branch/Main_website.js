@@ -16,6 +16,22 @@ function webshellList(){
 	添加webshell
 */
 function addWebShell(){
+	$(".col-xs-9 .btn-group button:first").click(function(){
+		swal({
+			title: "添加WebShell",
+			text: '<input type="text" class="form-control alert-input" placeholder="URL"><input type="text" class="form-control alert-input" placeholder="PassWord"><button id="scriptCategory">脚本类型</button>',
+			html: true,
+			showCancelButton: true,
+			closeOnConfirm: false,
+			confirmButtonText:"添加",
+			cancelButtonText:"取消",
+		},
+		function(){
+			swal.showInputError("PassWord为空！");
+		});
+	})
+}
+function addWebShell_bak(){
     $(".col-xs-9 .btn-group button:first").click(function(){
 	    swal({
 	        title: "添加WebShell",
@@ -141,5 +157,8 @@ function reviseButtonText(dom){
 	$(dom).parent("ul").prev().text($(dom).text())
 }
 // webshellList();
-// addWebShell();
+addWebShell();
 // total(".button-info>b");
+$("#asd").click(function(){
+	return false;
+})
