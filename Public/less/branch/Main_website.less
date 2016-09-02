@@ -96,45 +96,48 @@ div.col-xs-9{
 	padding: 17px 44px;
 	overflow:initial;
 	p{
+		input{
+			margin-bottom: 0;
+		}
 		input:nth-of-type(2){
-			width: 44.47%;
+			width: 70%;
 		}
 		input:nth-of-type(3){
 			margin-left: 4px;
 			width: 27%;
 		}
 		button{
-			float: inherit;
-			margin-top: 10px;
-			margin-left:3px;
-			padding: 4px 12px;
-			width: 27%;
+			display: inline-block;
+			margin-right:0;
+			padding: 10px 0;
+			width: 28.6%;
+			background-color: #434857;
 			cursor: pointer;
-			&:last-of-type{
-				margin-left: 3px;
+			&:hover{
+				background-color: #434857;
 			}
 		}
 		ul{
 			position: absolute;
-			top: 110px;
+			top: 116px;
     		right: 0px;
 			padding-left: 0px;
-			width: 27%;
+			width: 28.6%;;
 			text-align: left;
 			list-style: none;
 			background-color: #434857;
 			border: 1px solid #434857;
 			border-radius: 4px;
 			z-index: 1;
-			&:first-of-type{
-				right: 109px;
-				width: 26.8%;
-			}
 			li{
 				text-align: center;
 				letter-spacing: 1px;
 				padding: 5px 0;
 				cursor: pointer;
+				font-weight:bold;
+				&:hover{
+					background-color: #29A8DA;
+				}
 			}
 		}
 	}

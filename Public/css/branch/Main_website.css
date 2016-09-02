@@ -90,30 +90,33 @@ div.col-xs-9 .button-info-refresh span {
   padding: 17px 44px;
   overflow: initial;
 }
+.sweet-alert p input {
+  margin-bottom: 0;
+}
 .sweet-alert p input:nth-of-type(2) {
-  width: 44.47%;
+  width: 70%;
 }
 .sweet-alert p input:nth-of-type(3) {
   margin-left: 4px;
   width: 27%;
 }
 .sweet-alert p button {
-  float: inherit;
-  margin-top: 10px;
-  margin-left: 3px;
-  padding: 4px 12px;
-  width: 27%;
+  display: inline-block;
+  margin-right: 0;
+  padding: 10px 0;
+  width: 28.6%;
+  background-color: #434857;
   cursor: pointer;
 }
-.sweet-alert p button:last-of-type {
-  margin-left: 3px;
+.sweet-alert p button:hover {
+  background-color: #434857;
 }
 .sweet-alert p ul {
   position: absolute;
-  top: 110px;
+  top: 116px;
   right: 0px;
   padding-left: 0px;
-  width: 27%;
+  width: 28.6%;
   text-align: left;
   list-style: none;
   background-color: #434857;
@@ -121,15 +124,15 @@ div.col-xs-9 .button-info-refresh span {
   border-radius: 4px;
   z-index: 1;
 }
-.sweet-alert p ul:first-of-type {
-  right: 109px;
-  width: 26.8%;
-}
 .sweet-alert p ul li {
   text-align: center;
   letter-spacing: 1px;
   padding: 5px 0;
   cursor: pointer;
+  font-weight: bold;
+}
+.sweet-alert p ul li:hover {
+  background-color: #29A8DA;
 }
 .sweet-alert fieldset {
   clear: both;

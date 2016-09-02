@@ -119,8 +119,10 @@ ul.nav-tabs > span:first-child {
   color: #fff;
 }
 .sweet-alert p input {
+  display: inline-block;
   color: #ffffff;
   border: none;
+  height: 39px;
   background-color: #434857;
   box-shadow: none;
   outline: none;
@@ -131,6 +133,9 @@ ul.nav-tabs > span:first-child {
 .sweet-alert p input:hover {
   box-shadow: none;
   border: none;
+}
+.sweet-alert p:last-of-type {
+  letter-spacing: -0.5px;
 }
 .sweet-alert button.cancel,
 .sweet-alert button.confirm {

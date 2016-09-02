@@ -43,3 +43,67 @@ www 根目录
 ├─passwd.py         生成密码
 └─guillotines.sql   数据库文件
 ```
+
+> API接口说明
+
+#### 获取webshell总数
+```javascript
+地址:   /RootApi/webshell/total
+方式:   GET
+参数:   无
+类型:   Number
+示例:
+512
+```
+
+#### 获取webshell列表
+```javascript
+地址:   /RootApi/webshell/list
+方式:   POST
+参数:   无
+类型:   Json
+示例:
+{
+	'type':'success',
+	'info':[
+		{
+			'id':'1',
+			'url':'http://github.com/1.php',
+			'category':'PHP',
+			'time':'2016-8-31 22:58:28'
+		},
+		{
+			'id':'2',
+			'url':'http://google.com/x.php',
+			'category':'PHP',
+			'time':'2016-8-31 22:59:02'
+		}
+	]
+}
+```
+
+#### 添加webshell
+```javascript
+地址:   /RootApi/webshell/add
+方式:   POST
+参数:
+{
+	url:'编码成功后的url地址',
+	password:'webshell的密码',
+	category:'PHP'
+}
+类型:   Json
+示例:
+{
+	'type':'success'
+}
+```
+
+#### 注意事项
+只有当API的类型为`Json`格式时才会有错误信息，而且所有的`错误信息`都按照以下格式。
+```javascript
+{
+	'type':'error',
+	'info':'错误信息'
+}
+```
