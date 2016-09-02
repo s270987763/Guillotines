@@ -27,7 +27,58 @@ function addWebShell(){
 			cancelButtonText:"取消",
 		},
 		function(){
-			swal.showInputError("PassWord为空！");
+			var url = $(".alert-input:first").val();
+	    	var password = $(".alert-input:eq(1)").val();
+	    	var scriptCategory = $(".sweet-alert #scriptCategory").text();
+			if (url === "") {
+				swal.showInputError("WebShell地址为空！");
+				$(".alert-input:first").focus();
+				return false;
+			}
+			if(password === ""){
+				swal.showInputError("PassWord为空！");
+				$(".alert-input:eq(1)").focus();
+				return false;
+			}
+			if(scriptCategory === "脚本类型"){
+				swal.showInputError("脚本类型为空！");
+				return false;
+			}
+			$.ajax({
+				url: '/RootApi/webshell/add',
+				type: 'post',
+				dataType: 'text',
+				data:{
+					url:Base64.encode(encodeURI(url)),
+					password:Base64.encode(password),
+					category:Base64.encode(scriptCategory)
+				},
+				async:false
+			})
+			.done(function(data){
+				if(data.type == "success"){
+					swal({
+					    title: "添加成功",
+					    text: url + '<br/>' + password,
+					    type: 'success',
+					    html:true,
+					    showCancelButton: false,
+					    confirmButtonText:"确定",
+					},function(){
+						$(".table tbody tr").remove();
+						webshellList();
+					});
+				}else{
+					swal({
+						title: "添加失败",
+						text: data.info,
+						type: 'error',
+						html:true,
+						showCancelButton: false,
+						confirmButtonText:"确定",
+					});
+				}
+			})
 		});
 	})
 }

@@ -90,6 +90,9 @@ div.col-xs-9 .button-info-refresh span {
   padding: 17px 44px;
   overflow: initial;
 }
+.sweet-alert p input {
+  margin-bottom: 0;
+}
 .sweet-alert p input:nth-of-type(2) {
   width: 70%;
 }
