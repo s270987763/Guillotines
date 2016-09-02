@@ -113,10 +113,10 @@ div.col-xs-9 .button-info-refresh span {
 }
 .sweet-alert p ul {
   position: absolute;
-  top: 110px;
+  top: 116px;
   right: 0px;
   padding-left: 0px;
-  width: 27%;
+  width: 28.6%;
   text-align: left;
   list-style: none;
   background-color: #434857;
@@ -124,15 +124,15 @@ div.col-xs-9 .button-info-refresh span {
   border-radius: 4px;
   z-index: 1;
 }
-.sweet-alert p ul:first-of-type {
-  right: 109px;
-  width: 26.8%;
-}
 .sweet-alert p ul li {
   text-align: center;
   letter-spacing: 1px;
   padding: 5px 0;
   cursor: pointer;
+  font-weight: bold;
+}
+.sweet-alert p ul li:hover {
+  background-color: #29A8DA;
 }
 .sweet-alert fieldset {
   clear: both;

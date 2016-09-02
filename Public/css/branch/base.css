@@ -134,6 +134,9 @@ ul.nav-tabs > span:first-child {
   box-shadow: none;
   border: none;
 }
+.sweet-alert p:last-of-type {
+  letter-spacing: -0.5px;
+}
 .sweet-alert button.cancel,
 .sweet-alert button.confirm {
   box-shadow: none !important;
