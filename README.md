@@ -1,4 +1,4 @@
-> 项目介绍
+﻿> 项目介绍
 
 为了更方便的而又跨平台的使用“中国菜刀”，我们创建了这个项目。该项目是Web版的"中国菜刀",我们暂时取名叫“血滴子”。欢迎感兴趣的朋友一起交流学习。
 
@@ -10,12 +10,11 @@ Black-Hole（JavaScrip前端，用于处理“管理器”在浏览器下的显�
 
 > 安装方法
 
-1. `pip install bottle`
-2. `pip install beaker`
-3. `pip install pymysql`
-4. `pip install sqlalchemy`
-5. `pip install bottle_sqlalchemy`
-6. `pip install jinja2`
+1. `pip install beaker`
+2. `pip install pymysql`
+3. `pip install sqlalchemy`
+4. `pip install bottle_sqlalchemy`
+5. `pip install jinja2`
 
 > 项目的目录结构
 
