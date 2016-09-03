@@ -12,9 +12,6 @@ function webshellList(){
 		}
 	})
 }
-/*
-	添加webshell
-*/
 function addWebShell(){
 	$(".col-xs-9 .btn-group button:first").click(function(){
 		swal({
@@ -81,15 +78,17 @@ function addWebShell(){
 			})
 		});
 		$(".sweet-alert p input:eq(0)").blur(function(){
-			var scriptFile = ['php','asp','aspx','jsp'];
-			var fileType;
-			var webshellFile = parseURL($(this).val()).file.split(".").pop();
+			var scriptFile,fileType,webshellFile;
 			if($(this).val() == ""){
 				return false;
 			}
+			scriptFile = ['php','asp','aspx','jsp'];
+			webshellFile = parseURL($(this).val()).file.split(".").pop();
+			if(webshellFile.indexOf("?") != "-1"){
+				webshellFile = webshellFile.split("?")[0];
+			}
 			scriptFile.forEach(function(index, item){
-				console.log(index,webshellFile)
-				if(index == webshellFile){
+				if(index == webshellFile.toLowerCase()){
 					fileType = index;
 				}
 			})
