@@ -107,4 +107,10 @@ www 根目录
 	'type':'error',
 	'info':'错误信息'
 }
+
+####添加webshell时，如果url已经存在，则返回如下信息
+{
+"type":"error",
+"info":"URL已存在"
+}
 ```
