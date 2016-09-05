@@ -7,7 +7,7 @@ from App.Model.models import User
 def checkLogin(db,email,pwd):
     try:
         email=checkemail(email)
-        
+
         pwd=makePass(pwd)
         print(pwd)
         user=db.query(User).filter(User.EMAIL==email).first()
@@ -16,10 +16,10 @@ def checkLogin(db,email,pwd):
             md5pass=makePass(pwd+salt)
             print(md5pass)
             if user.PWD==md5pass:
-                return 'sucess'
+                return "sucess"
             else:
-                return 'error'
+                return "error"
         else:
-            return 'error'
+            return "error"
     except Exception as e:
         return e

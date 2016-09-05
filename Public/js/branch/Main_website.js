@@ -2,13 +2,13 @@
 	$.ajax({
 		url: '/RootApi/webshell/list/1',
 		type: 'get',
-		dataType: 'text',
-		async:false
+		dataType: 'json',
 	})
-	.done(function(data){
-		if(data.type == "success"){
-			for(var i = 0;i < data.info.length;i++){
-				$(".table tbody").append('<tr><th>' + json.info[i].id + '</th><td>' + Base64.encode(json.info[i].url) + '</td><td>' + json.info[i].category + '</td><td>' + json.info[i].time + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
+	.done(function(json){
+		console.log(json)
+		if(json.type == "success"){
+			for(var i = 0;i < json.info.length;i++){
+				$(".table tbody").append('<tr><th>' + json.info[i].id + '</th><td>' + Base64.decode(json.info[i].url) + '</td><td>' + json.info[i].category + '</td><td>' + json.info[i].time.split(" ")[0] + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
 			}
 		}
 	})

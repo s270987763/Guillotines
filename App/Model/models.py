@@ -15,16 +15,16 @@ class ShellDbConfig(Base):
     PORT=Column(String(5))
     PWD=Column(String(32))
     CREATE_TIME=Column(DateTime)
-    
+
     def __init__(self,host,port,pwd):
         self.HOST=host
         self.PORT=port
         self.PWD=pwd
-        
+
     def __repr__(self):
         return "<gu_shelldbconf('%s,%s,%s')>" % (self.HOST,self.PORT,self.PWD)
-    
-    
+
+
 class User(Base):
     __tablename__='gu_users'
     ID=Column(Integer,Sequence('id_seq'), primary_key=True)
@@ -34,18 +34,18 @@ class User(Base):
     SALT=Column(String(10))
     UTYPE=Column(String(10))
     CREATE_TIME=Column(DateTime)
-    
+
     def __init__(self,name,email,pwd,salt,utype):
         self.NAME=name
         self.EMAIL=email
         self.PWD=pwd
         self.SALT=salt
         self.UTYPE=utype
-        
-    
+
+
     def __repr__(self):
         return "<User('%s,%s,%s,%s,%s')>" % (self.NAME,self.EMAIL,self.PWD,self.SALT,self.UTYPE)
-    
+
 
 class WebShell(Base):
     __tablename__='gu_webshell'
@@ -59,7 +59,7 @@ class WebShell(Base):
     HTTPCODE=Column(String(3))
     BR=Column(Integer)
     PR=Column(Integer)
-    
+
     def __init__(self,url,pwd,category):
         self.URL=url
         self.PWD=pwd
@@ -69,10 +69,7 @@ class WebShell(Base):
         #self.HTTPCODE=httpcode
         #self.BR=br
         #self.PR=pr
-        
+
     def __repr__(self):
         url=base64.b64encode(self.URL.encode(encoding='utf-8'))
-        return "{'id':%s,'url':%s,'category':%s,'time':%s,'ip':%s,'address':%s,'httpcode':%s,'br':%s,'pr':%s}" %(self.ID,"'"+url.decode()+"'",self.CATEGORY,self.CREATE_TIME,self.IP,self.IP_ADDRESS,self.HTTPCODE,self.BR,self.PR)
-    
-    
-    
+        return '{"id":"%s","url":"%s","category":"%s","time":"%s","ip":"%s","address":"%s","httpcode":"%s","br":"%s","pr":"%s"}' %(self.ID,url.decode(),self.CATEGORY,self.CREATE_TIME,self.IP,self.IP_ADDRESS,self.HTTPCODE,self.BR,self.PR)
