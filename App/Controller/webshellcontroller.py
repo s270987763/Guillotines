@@ -15,6 +15,9 @@ def addOneShell(db,url,password,category):
 
     try:
         shell=WebShell(url,password,category)
+        webshell=db.query(WebShell).filter(URL==url).first()
+        if webshell:
+            return {"type":"webshell已存在"}
         db.add(shell)
         return {"type":"success"}
     except Exception as e:
