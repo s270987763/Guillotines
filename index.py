@@ -103,9 +103,9 @@ def MainWebsite(db):
     email=s.get('email',None)
     if not email:
         return redirect('/Login')
-    
+
     return template('App/View/Main/website.tpl')
-    
+
 #静态文件资源模板
 @route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif|eot|svg|ttf|woff|woff2|otf]$>')
 def Public(filename):
@@ -132,9 +132,9 @@ def Shelladd(db):
     except Exception as e:
         logging.error(e)
         return {"type":"error"}
-    
 
 
 
-run(app=app,host="127.0.0.1",debug=True,reloader=True,port="8088")
+
+run(app=app,host="127.0.0.1",debug=True,reloader=True,port="8888")
 #run(app=app,host="127.0.0.1",server='gunicorn',port="8088")

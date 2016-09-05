@@ -44,11 +44,11 @@ function addWebShell(){
 			$.ajax({
 				url: '/RootApi/webshell/add',
 				type: 'post',
-				dataType: 'text',
+				dataType: 'json',
 				data:{
-					url:url,
-					password:password,
-					category:scriptCategory
+					url:Base64.encode(encodeURI(url)),
+					password:Base64.encode(password),
+					category:Base64.encode(scriptCategory)
 				},
 				async:false
 			})
