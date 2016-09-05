@@ -58,7 +58,8 @@ www 根目录
 
 #### 获取webshell列表
 ```javascript
-地址:   /RootApi/webshell/list
+地址:   /RootApi/webshell/list/<int:page>
+#每页显示10条记录
 方式:   POST
 参数:   无
 类型:   Json
@@ -82,13 +83,13 @@ www 根目录
 }
 ```
 
-#### 添加webshell
+#### 添加单个webshell
 ```javascript
 地址:   /RootApi/webshell/add
 方式:   POST
 参数:
 {
-	url:'编码成功后的url地址',
+	url:'url地址',
 	password:'webshell的密码',
 	category:'PHP'
 }
