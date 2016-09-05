@@ -28,7 +28,7 @@
 		    </ul>
 		</div>
         <div class="col-xs-9">
-            <button class="button-info"><span class="glyphicon glyphicon-flash"></span>WebShell总数：<b>$这里填写目前为止一共有多少个webshell</b></button>
+            <button class="button-info"><span class="glyphicon glyphicon-flash"></span>WebShell总数：<b>{{total_webshell}}</b></button>
             <div style="clear:both"></div>
             <div class="hr-text">
                 <h6>近7天，每天上传的WebShell数量统计报表</h6>

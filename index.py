@@ -8,12 +8,13 @@ from sqlalchemy import create_engine,Column,Integer,Sequence,String
 from sqlalchemy.ext.declarative import declarative_base
 from beaker.middleware import SessionMiddleware
 from Core.bottle import jinja2_view as view
+from Core.bottle import jinja2_template as template
 from Core.bottle import redirect,static_file
 from App.Common.utils import makePass,randSalt,checkxss,checkuname,checktel,checkemail
 import re,string,logging,json
-from Core.bottle import request,template
 from App.Controller.userscontroller import checkLogin
 from App.Conf.conf import dbconfig
+from App.Controller.webshellcontroller import getTotalShell,addOneShell
 
 
 #设置session参数
@@ -85,20 +86,53 @@ def check(db):
     info={"type":info}
     return info
 
-#Main路由
-@route('/Main/<path>')
-def MainPath(path):
+#操作主界面
+@route('/Main/index')
+def MainIndex(db):
     s=request.environ.get('beaker.session')
     email=s.get('email',None)
     if not email:
         return redirect('/Login')
-    return template('App/View/Main/'+path+'.tpl')
+    total_webshell=getTotalShell(db)
+    return template('App/View/Main/index.tpl',total_webshell=total_webshell)
 
-
+#website
+@route('/Main/website')
+def MainWebsite(db):
+    s=request.environ.get('beaker.session')
+    email=s.get('email',None)
+    if not email:
+        return redirect('/Login')
+    
+    return template('App/View/Main/website.tpl')
+    
 #静态文件资源模板
 @route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif|eot|svg|ttf|woff|woff2|otf]$>')
 def Public(filename):
     return static_file(filename, root="Public")
+
+#获取webshell总数
+@route('/RootApi/webshell/total')
+def Gettotalshell(db):
+    return getTotalShell(db)
+
+#添加一个webshell
+@route('/RootApi/webshell/add',method="POST")
+def Shelladd(db):
+    try:
+        s=request.environ.get('beaker.session')
+        email=s.get('email',None)
+        if not email:
+            return redirect('/Login')
+        url=request.POST['url']
+        password=request.POST['password']
+        category=request.POST['category']
+        addOneShell(db,url,password,category)
+        return {"type":"success"}
+    except Exception as e:
+        logging.error(e)
+        return {"type":"error"}
+    
 
 
 

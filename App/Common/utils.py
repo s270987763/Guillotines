@@ -55,3 +55,6 @@ def checkemail(content):
         return uemail.group()
     else:
         return None
+    
+def urlToip(url):
+    return ip

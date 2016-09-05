@@ -46,9 +46,9 @@ function addWebShell(){
 				type: 'post',
 				dataType: 'text',
 				data:{
-					url:Base64.encode(encodeURI(url)),
-					password:Base64.encode(password),
-					category:Base64.encode(scriptCategory)
+					url:url,
+					password:password,
+					category:scriptCategory
 				},
 				async:false
 			})

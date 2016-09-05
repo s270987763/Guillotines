@@ -58,15 +58,15 @@ class WebShell(Base):
     BR=Column(Integer)
     PR=Column(Integer)
     
-    def __init__(self,url,pwd,ip,address,category,httpcode,br,pr):
+    def __init__(self,url,pwd,category):
         self.URL=url
         self.PWD=pwd
-        self.IP=ip
-        self.IP_ADDRESS=address
+        #self.IP=ip
+        #self.IP_ADDRESS=address
         self.CATEGORY=category
-        self.HTTPCODE=httpcode
-        self.BR=br
-        self.PR=pr
+        #self.HTTPCODE=httpcode
+        #self.BR=br
+        #self.PR=pr
         
     def __repr__(self):
         return "<Webshell('%s,%s,%s,%s,%s,%s,%s,%s')>"  % (self.URL,self.PWD,self.IP,self.IP_ADDRESS,self.CATEGORY,self.HTTPCODE,self.BR,self.PR)
