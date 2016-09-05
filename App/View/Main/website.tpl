@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -38,7 +38,7 @@
                 <button type="button" class="btn btn-default">上一页</button>
                 <button type="button" class="btn btn-default">下一页</button>
             </div>
-            <button class="button-info"><span class="glyphicon glyphicon-flash"></span>WebShell总数：<b>{$total}</b></button>
+            <button class="button-info"><span class="glyphicon glyphicon-flash"></span>WebShell总数：<b>{{total_webshell}}</b></button>
             <button class="button-info button-info-refresh"><span class="glyphicon glyphicon-refresh"></span></button>
             <table class="table">
                 <thead>

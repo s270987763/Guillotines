@@ -69,7 +69,7 @@ class WebShell(Base):
         #self.PR=pr
         
     def __repr__(self):
-        return "<Webshell('%s,%s,%s,%s,%s,%s,%s,%s')>"  % (self.URL,self.PWD,self.IP,self.IP_ADDRESS,self.CATEGORY,self.HTTPCODE,self.BR,self.PR)
+        return '{"id":%s,"url":%s,"category":%s,"time":%s,"ip":%s,"address":%s,"httpcode":%s,"br":%s,"pr":%s}'  % (self.ID,self.URL,self.CATEGORY,self.CREATE_TIME,self.IP,self.IP_ADDRESS,self.HTTPCODE,self.BR,self.PR)
     
     
     

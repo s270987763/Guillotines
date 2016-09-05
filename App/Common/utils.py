@@ -3,6 +3,7 @@
 from random import sample
 import hashlib
 import re
+import json
 
 #MD5加密
 def makePass(pwd):

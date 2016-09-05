@@ -1,7 +1,7 @@
 ﻿function webshellList(){
 	$.ajax({
-		url: '/RootApi/webshell/list',
-		type: 'post',
+		url: '/RootApi/webshell/list/1',
+		type: 'get',
 		dataType: 'json',
 	})
 	.done(function(data){
@@ -112,5 +112,5 @@ function fun_scriptCategory(){
 		ul.attr('class', 'dom-hidden');
 	}
 }
-// webshellList();
+webshellList();
 addWebShell();

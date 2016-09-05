@@ -14,7 +14,7 @@ from App.Common.utils import makePass,randSalt,checkxss,checkuname,checktel,chec
 import re,string,logging,json
 from App.Controller.userscontroller import checkLogin
 from App.Conf.conf import dbconfig
-from App.Controller.webshellcontroller import getTotalShell,addOneShell
+from App.Controller.webshellcontroller import getTotalShell,addOneShell,getShellLists
 
 
 #设置session参数
@@ -103,8 +103,8 @@ def MainWebsite(db):
     email=s.get('email',None)
     if not email:
         return redirect('/Login')
-
-    return template('App/View/Main/website.tpl')
+    total_webshell=getTotalShell(db)
+    return template('App/View/Main/website.tpl',total_webshell=total_webshell)
 
 #静态文件资源模板
 @route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif|eot|svg|ttf|woff|woff2|otf]$>')
@@ -127,12 +127,26 @@ def Shelladd(db):
         url=request.POST['url']
         password=request.POST['password']
         category=request.POST['category']
-        addOneShell(db,url,password,category)
-        return {"type":"success"}
+        return addOneShell(db,url,password,category)
     except Exception as e:
         logging.error(e)
         return {"type":"error"}
 
+
+#获取webshell列表
+@route('/RootApi/webshell/list/<page:int>',method="GET")
+def GetShellLists(db,page):
+    try:
+        #权限验证，暂时关闭，直接访问api接口即可查询webshell
+        #s=request.environ.get('beaker.session')
+        #email=s.get('email',None)
+        #if not email:
+            #return redirect('/Login')
+        return getShellLists(db,page)
+    except Exception as e:
+        logging.error(e)
+        return {"type":"error"}
+    
 
 
 
