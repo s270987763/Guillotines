@@ -1,4 +1,4 @@
-function webshellList(){
+﻿function webshellList(){
 	$.ajax({
 		url: '/RootApi/webshell/list',
 		type: 'post',
@@ -46,9 +46,9 @@ function addWebShell(){
 				type: 'post',
 				dataType: 'json',
 				data:{
-					url:Base64.encode(encodeURI(url)),
-					password:Base64.encode(password),
-					category:Base64.encode(scriptCategory)
+					url:url,
+					password:password,
+					category:scriptCategory
 				},
 				async:false
 			})
