@@ -142,7 +142,9 @@ def GetShellLists(db,page):
         #email=s.get('email',None)
         #if not email:
             #return redirect('/Login')
-        return getShellLists(db,page)
+        info=getShellLists(db,page)
+        infostr=json.dumps(str(info))
+        return json.loads(infostr)
     except Exception as e:
         logging.error(e)
         return {'type':'error'}

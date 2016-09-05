@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-09-05 14:26:39
+Date: 2016-09-05 17:14:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -60,13 +60,13 @@ CREATE TABLE `gu_webshell` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `URL` varchar(255) NOT NULL,
   `PWD` varchar(32) NOT NULL,
-  `IP` varchar(128) DEFAULT NULL COMMENT 'IP地址',
-  `IP_ADDRESS` varchar(255) DEFAULT NULL COMMENT '归属地',
+  `IP` varchar(128) DEFAULT '' COMMENT 'IP地址',
+  `IP_ADDRESS` varchar(255) DEFAULT '' COMMENT '归属地',
   `CATEGORY` varchar(6) NOT NULL COMMENT 'shell类型',
   `CREATE_TIME` timestamp NOT NULL DEFAULT '2016-07-20 22:52:47' ON UPDATE CURRENT_TIMESTAMP,
-  `HTTPCODE` varchar(3) DEFAULT NULL COMMENT '状态码',
-  `BR` int(1) DEFAULT NULL COMMENT '权重',
-  `PR` int(1) DEFAULT NULL COMMENT 'PR',
+  `HTTPCODE` varchar(3) DEFAULT '' COMMENT '状态码',
+  `BR` int(1) DEFAULT '0' COMMENT '权重',
+  `PR` int(1) DEFAULT '0' COMMENT 'PR',
   PRIMARY KEY (`ID`),
   KEY `index_url` (`URL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
