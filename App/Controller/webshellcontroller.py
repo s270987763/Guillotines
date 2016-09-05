@@ -15,9 +15,9 @@ def addOneShell(db,url,password,category):
     try:
         shell=WebShell(url,password,category)
         db.add(shell)
-        return {"type":"success"}
+        return {'type':'success'}
     except Exception as e:
-        return {"type":e}
+        return {'type':e}
     
 
 def getShellLists(db,page):
@@ -30,6 +30,6 @@ def getShellLists(db,page):
         #query=query.offset(0)  --设置开始位置
         #query=query.limit(10)  --设置返回多少条
         shells=db.query(WebShell).order_by('ID').offset(start).limit(num).all()
-        return {"type":"success","info":str(shells)}
+        return {'type':'success','info':str(shells)}
     except Exception as e:
-        return {"type":e}
+        return {'type':e}

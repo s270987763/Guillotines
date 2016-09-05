@@ -79,11 +79,11 @@ def check(db):
     email=request.POST.get('email')
     pwd=request.POST.get('password')
     info=checkLogin(db,email,pwd)
-    if info=="sucess":
+    if info=='sucess':
         s=request.environ.get('beaker.session')
         s['email']=email
         s.save()
-    info={"type":info}
+    info={'type':info}
     return info
 
 #操作主界面
@@ -130,7 +130,7 @@ def Shelladd(db):
         return addOneShell(db,url,password,category)
     except Exception as e:
         logging.error(e)
-        return {"type":"error"}
+        return {'type':'error'}
 
 
 #获取webshell列表
@@ -145,7 +145,7 @@ def GetShellLists(db,page):
         return getShellLists(db,page)
     except Exception as e:
         logging.error(e)
-        return {"type":"error"}
+        return {'type':'error'}
     
 
 
