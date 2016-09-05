@@ -14,12 +14,14 @@ def getTotalShell(db):
 def addOneShell(db,url,password,category):
 
     try:
-        shell=WebShell(url,password,category)
-        webshell=db.query(WebShell).filter(URL==url).first()
+        
+        webshell=db.query(WebShell).filter(WebShell.URL==url).first()
         if webshell:
-            return {"type":"webshell已存在"}
-        db.add(shell)
-        return {"type":"success"}
+            return {"type":"exists"}
+        else:
+            shell=WebShell(url,password,category)
+            db.add(shell)
+            return {"type":"success"}
     except Exception as e:
         return {"type":e}
 
