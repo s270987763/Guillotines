@@ -65,7 +65,8 @@ function addWebShell(){
 						$(".table tbody tr").remove();
 						webshellList();
 					});
-				}else{
+				}
+				else{
 					swal({
 						title: "添加失败",
 						text: data.info,
