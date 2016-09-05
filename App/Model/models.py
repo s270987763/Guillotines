@@ -3,6 +3,7 @@
 from sqlalchemy import create_engine,Column,Integer,Sequence,String,DateTime,Float
 from sqlalchemy.ext.declarative import declarative_base
 import json
+import base64
 
 
 Base = declarative_base()
@@ -70,7 +71,8 @@ class WebShell(Base):
         #self.PR=pr
         
     def __repr__(self):
-        return "{'id':%s,'url':%s,'category':%s,'time':%s,'ip':%s,'address':%s,'httpcode':%s,'br':%s,'pr':%s}" %(self.ID,self.URL,self.CATEGORY,self.CREATE_TIME,self.IP,self.IP_ADDRESS,self.HTTPCODE,self.BR,self.PR)
+        url=base64.b64encode(self.URL.encode(encoding='utf-8'))
+        return "{'id':%s,'url':%s,'category':%s,'time':%s,'ip':%s,'address':%s,'httpcode':%s,'br':%s,'pr':%s}" %(self.ID,url.decode(),self.CATEGORY,self.CREATE_TIME,self.IP,self.IP_ADDRESS,self.HTTPCODE,self.BR,self.PR)
     
     
     
