@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2016-08-30 16:16:00
+Date: 2016-09-05 14:26:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,11 +45,12 @@ CREATE TABLE `gu_users` (
   `UTYPE` varchar(10) NOT NULL DEFAULT 'user' COMMENT '用户类型',
   `CREATE_TIME` timestamp NOT NULL DEFAULT '2016-07-20 21:35:31' ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户信息表';
 
 -- ----------------------------
 -- Records of gu_users
 -- ----------------------------
+INSERT INTO `gu_users` VALUES ('1', 'MXi4oyu', '798033502@qq.com', 'd9a3650b375d1bfdb529dbf036d626a4', '1234567890', 'user', '2016-08-31 11:34:31');
 
 -- ----------------------------
 -- Table structure for `gu_webshell`
@@ -59,8 +60,8 @@ CREATE TABLE `gu_webshell` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `URL` varchar(255) NOT NULL,
   `PWD` varchar(32) NOT NULL,
-  `IP` varchar(128) NOT NULL COMMENT 'IP地址',
-  `IP_ADDRESS` varchar(255) NOT NULL COMMENT '归属地',
+  `IP` varchar(128) DEFAULT NULL COMMENT 'IP地址',
+  `IP_ADDRESS` varchar(255) DEFAULT NULL COMMENT '归属地',
   `CATEGORY` varchar(6) NOT NULL COMMENT 'shell类型',
   `CREATE_TIME` timestamp NOT NULL DEFAULT '2016-07-20 22:52:47' ON UPDATE CURRENT_TIMESTAMP,
   `HTTPCODE` varchar(3) DEFAULT NULL COMMENT '状态码',
