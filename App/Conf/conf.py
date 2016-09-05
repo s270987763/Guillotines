@@ -4,7 +4,7 @@
 from sqlalchemy import create_engine
 
 def dbconfig():
-    engine=create_engine('mysql+pymysql://root:root@localhost:3306/guillotines?charset=utf8')
+    engine=create_engine('mysql+pymysql://root:741521@localhost:3306/gu?charset=utf8')
     return engine
 
 def showShellconfig():
