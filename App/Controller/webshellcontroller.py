@@ -21,8 +21,14 @@ def addOneShell(db,url,password,category):
             return {"type":"error","info":"URL已存在"}
         else:
             shell=WebShell(url,password,category)
-            db.add(shell)
-            return {"type":"success"}
+            ck=checkShell(db,url,password)
+            print(ck)
+            if ck:
+                db.add(shell)
+                return {"type":"success"}
+            else:
+                return {"type":"error","info":"连接失败"}
+            
     except Exception as e:
         return {"type":e}
 
