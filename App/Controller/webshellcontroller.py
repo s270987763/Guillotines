@@ -22,12 +22,14 @@ def addOneShell(db,url,password,category):
         else:
             shell=WebShell(url,password,category)
             ck=checkShell(db,url,password)
-            print(ck)
-            if ck:
-                db.add(shell)
-                return {"type":"success"}
+            if ck[1]==404:
+                return {"type":"error","info":"文件不存在"}
             else:
-                return {"type":"error","info":"连接失败"}
+                if ck[0]=="1":
+                    db.add(shell)
+                    return {"type":"success"}
+                else:
+                    return {"type":"error","info":"密码错误"}
             
     except Exception as e:
         return {"type":e}
@@ -52,10 +54,7 @@ def checkShell(db,url,pwd):
     try:
         webshell=WebShellAdmin(url,pwd,"echo 1;")
         mdata=webshell.doPost()
-        if mdata=="1":
-            return True
-        else:
-            return False
+        return mdata
     except Exception as e:
         print(e)
         

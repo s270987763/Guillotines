@@ -25,7 +25,8 @@ class WebShellAdmin():
         
         try:
             response_data=urllib.request.urlopen(mrequest).read().decode('utf-8')
-            return response_data
+            mcode=urllib.request.urlopen(mrequest).code
+            return response_data,mcode
         except Exception as e:
             print(e)
 
