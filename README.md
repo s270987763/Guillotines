@@ -65,19 +65,19 @@ www 根目录
 类型:   Json
 示例:
 {
-	'type':'success',
-	'info':[
+	"type":"success",
+	"info":[
 		{
-			'id':'1',
-			'url':'http://github.com/1.php',
-			'category':'PHP',
-			'time':'2016-8-31 22:58:28'
+			"id":"1",
+			"url":"http://github.com/1.php",
+			"category":"PHP",
+			"time":"2016-8-31 22:58:28"
 		},
 		{
-			'id':'2',
-			'url':'http://google.com/x.php',
-			'category':'PHP',
-			'time':'2016-8-31 22:59:02'
+			"id":"2",
+			"url":"http://google.com/x.php",
+			"category":"PHP",
+			"time":"2016-8-31 22:59:02"
 		}
 	]
 }
@@ -96,7 +96,22 @@ www 根目录
 类型:   Json
 示例:
 {
-	'type':'success'
+	"type":"success"
+}
+```
+
+#### 删除单个webshell
+```javascript
+地址:   /RootApi/webshell/del
+方式:   POST
+参数:
+{
+	url:'url地址',
+}
+类型:   Json
+示例:
+{
+	"type":"success"
 }
 ```
 
@@ -104,13 +119,6 @@ www 根目录
 只有当API的类型为`Json`格式时才会有错误信息，而且所有的`错误信息`都按照以下格式。
 ```javascript
 {
-	'type':'error',
-	'info':'错误信息'
+	"type":"error",
+	"info":"错误信息"
 }
-
-####添加webshell时，如果url已经存在，则返回如下信息
-{
-"type":"error",
-"info":"URL已存在"
-}
-```

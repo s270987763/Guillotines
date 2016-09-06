@@ -122,7 +122,7 @@ function deleteWebshell(shell){
 		})
 		.done(function(data){
 			if(data.type == "success"){
-				swal("删除成功!", data.info, "success");
+				swal("删除成功!", "webshell已成功删除", "success");
 				webshellList();
 			}else{
 				swal("删除失败!", data.info, "error");
