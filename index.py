@@ -15,6 +15,7 @@ import re,string,logging,json
 from App.Controller.userscontroller import checkLogin
 from App.Conf.conf import dbconfig
 from App.Controller.webshellcontroller import getTotalShell,addOneShell,getShellLists,delOneShell
+from App.Conf.conf import showShellconfig
 
 
 #设置session参数
@@ -104,7 +105,13 @@ def MainWebsite(db):
     if not email:
         return redirect('/Login')
     total_webshell=getTotalShell(db)
-    return template('App/View/Main/website.tpl',total_webshell=total_webshell)
+    num=showShellconfig()
+    pages=divmod(int(total_webshell),num)
+    if pages[1]==0:
+        total_page=pages[0]
+    else:
+        total_page=pages[0]+1
+    return template('App/View/Main/website.tpl',total_webshell=total_webshell,total_page=total_page)
 
 #静态文件资源模板
 @route('/Public/<filename:re:.*.[css|js||png|jpg|jpeg|gif|eot|svg|ttf|woff|woff2|otf]$>')

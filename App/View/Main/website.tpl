@@ -35,8 +35,11 @@
                 <button type="button" class="btn btn-default">批量删除</button>
             </div>
             <div class="btn-group" role="group">
+		<button type="button" class="btn btn-default">首页</button>
                 <button type="button" class="btn btn-default">上一页</button>
-                <button type="button" class="btn btn-default">下一页</button>
+                <button type="button" class="btn btn-default">当前{{current_page}}页</button>
+		<button type="button" class="btn btn-default">下一页</button>
+		<button type="button" class="btn btn-default">共{{total_page}}页</button>
             </div>
             <button class="button-info"><span class="glyphicon glyphicon-flash"></span>WebShell总数：<b>{{total_webshell}}</b></button>
             <button class="button-info button-info-refresh"><span class="glyphicon glyphicon-refresh"></span></button>

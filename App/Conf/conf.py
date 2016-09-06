@@ -8,5 +8,5 @@ def dbconfig():
     return engine
 
 def showShellconfig():
-    #每页显示30个webshell
-    return 30
+    #每页显示20个webshell
+    return 20
