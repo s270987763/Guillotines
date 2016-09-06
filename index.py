@@ -14,7 +14,7 @@ from App.Common.utils import makePass,randSalt,checkxss,checkuname,checktel,chec
 import re,string,logging,json
 from App.Controller.userscontroller import checkLogin
 from App.Conf.conf import dbconfig
-from App.Controller.webshellcontroller import getTotalShell,addOneShell,getShellLists
+from App.Controller.webshellcontroller import getTotalShell,addOneShell,getShellLists,delOneShell
 
 
 #设置session参数
@@ -130,7 +130,7 @@ def Shelladd(db):
         return addOneShell(db,url,password,category)
     except Exception as e:
         logging.error(e)
-        return {'type':'error'}
+        return {'type':"error","info":e}
 
 
 #获取webshell列表
@@ -146,7 +146,25 @@ def GetShellLists(db,page):
         return json.loads(info)
     except Exception as e:
         logging.error(e)
-        return {'type':'error'}
+        return {'type':"error","info":e}
+
+
+#删除一个webshell
+@route('/RootApi/webshell/del',method="POST")
+def Shelldel(db):
+    try:
+        s=request.environ.get('beaker.session')
+        email=s.get('email',None)
+        if not email:
+            return redirect('/Login')
+        
+        url=request.POST['url']
+        delOneShell(url)
+        
+    except Exception as e:
+        logging.error(e)
+        return {'type':'error','info':e}
+    
 
 
 

@@ -32,7 +32,7 @@ def addOneShell(db,url,password,category):
                     return {"type":"error","info":"密码错误"}
             
     except Exception as e:
-        return {"type":e}
+        return {'type':"error","info":e}
 
 
 def getShellLists(db,page):
@@ -47,7 +47,7 @@ def getShellLists(db,page):
         shells=db.query(WebShell).order_by('ID').offset(start).limit(num).all()
         return '{"type":"success","info":%s}' %(shells)
     except Exception as e:
-        return {"type":e}
+        return {'type':"error","info":e}
 
 #验证webshell是否可用    
 def checkShell(db,url,pwd):
@@ -57,5 +57,17 @@ def checkShell(db,url,pwd):
         return mdata
     except Exception as e:
         print(e)
+        return {'type':"error","info":e}
+        
+
+#删除一个webshell
+def delOneShell(db,url):
+
+    try:
+        webshell=db.query(WebShell).filter(WebShell.URL==url).first()
+        db.del(webshell)
+        return {'type':"sucess"}
+    except Exception as e:
+        return {'type':"error","info":e}
         
 
