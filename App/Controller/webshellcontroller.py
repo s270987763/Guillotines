@@ -65,7 +65,7 @@ def delOneShell(db,url):
 
     try:
         webshell=db.query(WebShell).filter(WebShell.URL==url).first()
-        db.del(webshell)
+        db.delete(webshell)
         return {'type':"sucess"}
     except Exception as e:
         return {'type':"error","info":e}
