@@ -6,6 +6,7 @@ from sqlalchemy import func
 from App.Common.utils import checkxss
 from App.Conf.conf import showShellconfig
 import json
+from App.Common.commclass import WebShellAdmin
 
 def getTotalShell(db):
     num=db.query(func.count(WebShell.ID)).first()
@@ -39,3 +40,17 @@ def getShellLists(db,page):
         return '{"type":"success","info":%s}' %(shells)
     except Exception as e:
         return {"type":e}
+
+#验证webshell是否可用    
+def checkShell(db,url,pwd):
+    try:
+        webshell=WebShellAdmin(url,pwd,"echo 1;")
+        mdata=webshell.doPost()
+        if mdata=="1":
+            return True
+        else:
+            return False
+    except Exception as e:
+        print(e)
+        
+

