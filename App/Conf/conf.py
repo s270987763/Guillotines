@@ -9,4 +9,4 @@ def dbconfig():
 
 def showShellconfig():
     #每页显示20个webshell
-    return 20
+    return 30

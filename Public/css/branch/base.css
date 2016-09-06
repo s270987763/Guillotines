@@ -118,6 +118,9 @@ ul.nav-tabs > span:first-child {
 .sweet-alert p {
   color: #fff;
 }
+.sweet-alert p {
+  word-wrap: break-word;
+}
 .sweet-alert p input {
   display: inline-block;
   color: #ffffff;
@@ -159,4 +162,10 @@ ul.nav-tabs > span:first-child {
 }
 .dom-show {
   display: block !important;
+}
+.container {
+  width: 1400px !important;
+}
+.container .col-xs-3 {
+  width: 21% !important;
 }
