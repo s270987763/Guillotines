@@ -1,11 +1,26 @@
-﻿function webshellList(){
+var hashPage = parseInt(location.hash.split("")[1]);
+function webshellList(){
+	var page = "1";
+	if(hashPage > "0" && hashPage <= parseInt($(".totol-page").text())){
+		page = hashPage;
+	}
+	if(typeof(arguments[0]) === 'number'){
+		page = arguments[0];
+		if(arguments[0] == 0 || parseInt(page) > parseInt($(".totol-page").text())){
+			return false;
+		}
+	}
 	$.ajax({
-		url: '/RootApi/webshell/list/1',
+		url: '/RootApi/webshell/list/' + page,
 		type: 'get',
 		dataType: 'json',
+		async:false
 	})
 	.done(function(json){
 		if(json.type == "success"){
+			$(".table tbody").text("");
+			$(".list-page").text(page);
+			window.location = "#"+page
 			for(var i = 0;i < json.info.length;i++){
 				$(".table tbody").append('<tr><th>' + (i+1) + '</th><td class="webshell-url" data-url="' + myFun.base64.decode(json.info[i].url) + '">' + myFun.base64.decode(json.info[i].url) + '</td><td>' + json.info[i].category + '</td><td>' + json.info[i].time.split(" ")[0] + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li onClick="deleteWebshell(this)"><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
 			}
@@ -13,6 +28,9 @@
 		}
 	})
 }
+// function toPage(page){
+//
+// }
 function addWebShell(){
 	$(".col-xs-9 .btn-group button:first").click(function(){
 		swal({
