@@ -29,4 +29,5 @@ class WebShellAdmin():
             return response_data,mcode
         except Exception as e:
             print(e)
+            return ('0',404)
 
