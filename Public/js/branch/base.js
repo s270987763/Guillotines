@@ -2,7 +2,7 @@
 	在页面里对导航栏进行hover
 */
 $(document).ready(function($){
-	switch(window.location.href.split("/")[4]){
+	switch(window.location.href.split("/")[4].split("#")[0]){
 		case "index":
 			$(".col-xs-3 ul.nav li").eq(1).addClass('active');
 			break;
