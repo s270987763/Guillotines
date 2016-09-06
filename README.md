@@ -59,7 +59,7 @@ www 根目录
 #### 获取webshell列表
 ```javascript
 地址:   /RootApi/webshell/list/<page:int>
-#每页显示10条记录
+#每页显示30条记录
 方式:   POST
 参数:   无
 类型:   Json

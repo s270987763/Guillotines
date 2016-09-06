@@ -15,7 +15,7 @@ def getTotalShell(db):
 def addOneShell(db,url,password,category):
 
     try:
-        
+
         webshell=db.query(WebShell).filter(WebShell.URL==url).first()
         if webshell:
             return {"type":"error","info":"URL已存在"}
@@ -30,7 +30,7 @@ def addOneShell(db,url,password,category):
                     return {"type":"success"}
                 else:
                     return {"type":"error","info":"密码错误"}
-            
+
     except Exception as e:
         return {'type':"error","info":e}
 
@@ -49,7 +49,7 @@ def getShellLists(db,page):
     except Exception as e:
         return {'type':"error","info":e}
 
-#验证webshell是否可用    
+#验证webshell是否可用
 def checkShell(db,url,pwd):
     try:
         webshell=WebShellAdmin(url,pwd,"echo 1;")
@@ -58,7 +58,7 @@ def checkShell(db,url,pwd):
     except Exception as e:
         print(e)
         return {'type':"error","info":e}
-        
+
 
 #删除一个webshell
 def delOneShell(db,url):
@@ -67,10 +67,8 @@ def delOneShell(db,url):
         webshell=db.query(WebShell).filter(WebShell.URL==url).first()
         if webshell:
             db.delete(webshell)
-            return {'type':"sucess"}
+            return {'type':"success"}
         else:
             return {'type':"error","info":"webshell不存在"}
     except Exception as e:
         return {'type':"error","info":e}
-        
-
