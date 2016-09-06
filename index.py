@@ -159,7 +159,7 @@ def Shelldel(db):
             return redirect('/Login')
         
         url=request.POST['url']
-        delOneShell(url)
+        delOneShell(db,url)
         
     except Exception as e:
         logging.error(e)
