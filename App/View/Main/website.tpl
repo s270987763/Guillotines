@@ -35,11 +35,11 @@
                 <button type="button" class="btn btn-default">批量删除</button>
             </div>
             <div class="btn-group" role="group">
-		<button type="button" class="btn btn-default" onclick="webshellList(1)">首页</button>
-        <button type="button" class="btn btn-default" onclick="webshellList($('.list-page').text()-1)">上一页</button>
-		<button type="button" class="btn btn-default" onclick="webshellList(($('.list-page').text()*1+1))">下一页</button>
-		<button type="button" class="btn btn-default">当前第<span class="list-page">1</span>页</button>
-		<button type="button" class="btn btn-default">共<span class ="totol-page">{{total_page}}</span>页</button>
+				<button type="button" class="btn btn-default" onclick="webshellList(1)">首页</button>
+			    <button type="button" class="btn btn-default" onclick="webshellList($('.list-page').text()-1)">上一页</button>
+				<button type="button" class="btn btn-default" onclick="webshellList(($('.list-page').text()*1+1))">下一页</button>
+				<button type="button" class="btn btn-default">当前第<span class="list-page">1</span>页</button>
+				<button type="button" class="btn btn-default">共<span class ="totol-page">{{total_page}}</span>页</button>
             </div>
             <button class="button-info">WebShell总数：<b class="webshell-totol">{{total_webshell}}</b></button>
             <button class="button-info button-info-refresh" onclick="webshellList(($('.list-page').text()*1))"><span class="glyphicon glyphicon-refresh"></span></button>
@@ -56,6 +56,22 @@
                 <tbody>
                 </tbody>
             </table>
+			<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title" id="myLargeModalLabel">WebShell管理</h4>
+						</div>
+						<div class="modal-body">
+							<ul class="nav nav-pills nav-justified" role="tablist">
+							</ul>
+							<div class="tab-content webshellManagementContent">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
         </div>
     </div>
 </div>
@@ -65,4 +81,10 @@
 <script type="text/javascript" src="/Public/js/library/sweetalert.js"></script>
 <script type="text/javascript" src="/Public/js/branch/base.js"></script>
 <script type="text/javascript" src="/Public/js/branch/Main_website.js"></script>
+<script>
+$('.nav-justified:first a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+});
+</script>
 </html>

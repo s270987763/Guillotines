@@ -89,6 +89,9 @@ div.col-xs-9 .button-info-refresh {
 div.col-xs-9 .button-info-refresh span {
   margin-right: 0;
 }
+div.col-xs-9 .nav-justified {
+  margin-bottom: 20px;
+}
 .sweet-alert {
   padding: 17px 44px;
   overflow: initial;

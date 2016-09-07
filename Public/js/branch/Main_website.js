@@ -20,11 +20,12 @@ function webshellList(){
 		if(json.type == "success"){
 			$(".table tbody").text("");
 			$(".list-page").text(page);
-			window.location = "#"+page
+			window.location = "#"+page;
 			for(var i = 0;i < json.info.length;i++){
-				$(".table tbody").append('<tr><th>' + (i+1) + '</th><td class="webshell-url" data-url="' + myFun.base64.decode(json.info[i].url) + '">' + myFun.base64.decode(json.info[i].url) + '</td><td class="webshell-pwd" style="display:none">' + json.info[i].password + '</td><td>' + json.info[i].category + '</td><td>' + json.info[i].time.split(" ")[0] + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li onClick="deleteWebshell(this)"><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
+				$(".table tbody").append('<tr><th>' + (i+1) + '</th><td class="webshell-url" data-url="' + myFun.base64.decode(json.info[i].url) + '" data-toggle="modal" data-target=".bs-example-modal-lg">' + myFun.base64.decode(json.info[i].url) + '</td><td class="webshell-pwd" style="display:none">' + json.info[i].password + '</td><td>' + json.info[i].category + '</td><td>' + json.info[i].time.split(" ")[0] + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li onClick="deleteWebshell(this)"><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
 			}
-			myFun.substr(".webshell-url","80")
+			myFun.substr(".webshell-url","80");
+			showWebshellInfo();
 		}
 	})
 }
@@ -116,6 +117,65 @@ function addWebShell(){
 				$("#scriptCategory").text("脚本类型");
 			}
 		});
+	})
+}
+function showWebshellInfo(){
+	$(".table tbody tr").each(function(index,item){
+    	$(item).find("td:first").click(function(){
+			if($(".nav-justified:first li").length < 4){
+				var webshellManagementLen = ($(".nav-justified:first li").length+1);
+				for(var i = 0;i < 4;i++){
+					if($(".nav-justified:first li span").eq(i).text() == $(this).text()){
+						swal("展开失败", "您已经打开此站点的控制器，请勿重复打开", "warning");
+						return false;
+					}
+				}
+				$(".nav-justified:first").append('\
+				<li role="presentation">\
+					<a href="#webshell' + webshellManagementLen + '" id="webshell-tab' + webshellManagementLen + '" role="tab" data-toggle="tab" aria-controls="webshell' + webshellManagementLen + '" aria-expanded="false">' + myFun.parseURL($(this).text()).host + '</a>\
+					<span style="display:none">' + $(this).text() + '</span>\
+				</li>');
+				$(".webshellManagementContent").append('\
+				<div role="tabpanel" class="tab-pane fade" id="webshell' + webshellManagementLen + '" aria-labelledby="webshell-tab' + webshellManagementLen + '">\
+					<ul class="nav nav-pills nav-justified" role="tablist">\
+						<li role="presentation" class="active">\
+							<a href="#websiteInfo' + webshellManagementLen + '" id="website-info' + webshellManagementLen + '">网站信息</a>\
+						</li>\
+						<li role="presentation">\
+							<a href="#fileManagement' + webshellManagementLen + '" id="file-management' + webshellManagementLen + '">文件管理</a>\
+						</li>\
+						<li role="presentation">\
+							<a href="#virtualTerminal' + webshellManagementLen + '" id="virtual-terminal' + webshellManagementLen + '">虚拟终端</a>\
+						</li>\
+						<li role="presentation">\
+							<a href="#databaseManagement' + webshellManagementLen + '" id="database-management' + webshellManagementLen + '">数据库管理</a>\
+						</li>\
+					</ul>\
+					<div class="tab-content">\
+						<div role="tabpanel" class="tab-pane fade active in" id="websiteInfo' + webshellManagementLen + '" aria-labelledby="website-info' + webshellManagementLen + '">\
+							websiteInfo\
+						</div>\
+						<div role="tabpanel" class="tab-pane fade" id="fileManagement' + webshellManagementLen + '" aria-labelledby="file-management' + webshellManagementLen + '">\
+							fileManagement\
+						</div>\
+						<div role="tabpanel" class="tab-pane fade" id="virtualTerminal' + webshellManagementLen + '" aria-labelledby="virtual-terminal' + webshellManagementLen + '">\
+							virtualTerminal\
+						</div>\
+						<div role="tabpanel" class="tab-pane fade" id="databaseManagement' + webshellManagementLen + '" aria-labelledby="database-management' + webshellManagementLen + '">\
+							databaseManagement\
+						</div>\
+					</div>\
+				</div>');
+				$('.nav-pills a').click(function (e) {
+					e.preventDefault()
+					$(this).tab('show')
+				})
+				$('a#webshell-tab' + webshellManagementLen).click();
+				// $('#websiteInfo').click();
+			}else{
+				swal("展开失败", "显示空间不够，请关闭一个Tab", "warning");
+			}
+		})
 	})
 }
 function deleteWebshell(shell){
