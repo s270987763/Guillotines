@@ -41,7 +41,7 @@
 		<button type="button" class="btn btn-default">当前第<span class="list-page">1</span>页</button>
 		<button type="button" class="btn btn-default">共<span class ="totol-page">{{total_page}}</span>页</button>
             </div>
-            <button class="button-info">WebShell总数：<b>{{total_webshell}}</b></button>
+            <button class="button-info">WebShell总数：<b class="webshell-totol">{{total_webshell}}</b></button>
             <button class="button-info button-info-refresh" onclick="webshellList(($('.list-page').text()*1))"><span class="glyphicon glyphicon-refresh"></span></button>
             <table class="table">
                 <thead>

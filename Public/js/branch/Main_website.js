@@ -22,15 +22,12 @@ function webshellList(){
 			$(".list-page").text(page);
 			window.location = "#"+page
 			for(var i = 0;i < json.info.length;i++){
-				$(".table tbody").append('<tr><th>' + (i+1) + '</th><td class="webshell-url" data-url="' + myFun.base64.decode(json.info[i].url) + '">' + myFun.base64.decode(json.info[i].url) + '</td><td>' + json.info[i].category + '</td><td>' + json.info[i].time.split(" ")[0] + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li onClick="deleteWebshell(this)"><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
+				$(".table tbody").append('<tr><th>' + (i+1) + '</th><td class="webshell-url" data-url="' + myFun.base64.decode(json.info[i].url) + '">' + myFun.base64.decode(json.info[i].url) + '</td><td class="webshell-pwd" style="display:none">' + json.info[i].password + '</td><td>' + json.info[i].category + '</td><td>' + json.info[i].time.split(" ")[0] + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li onClick="deleteWebshell(this)"><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
 			}
-			myFun.substr(".webshell-url","70")
+			myFun.substr(".webshell-url","80")
 		}
 	})
 }
-// function toPage(page){
-//
-// }
 function addWebShell(){
 	$(".col-xs-9 .btn-group button:first").click(function(){
 		swal({
@@ -83,6 +80,7 @@ function addWebShell(){
 					},function(){
 						$(".table tbody tr").remove();
 						webshellList();
+						webshellTotal();
 					});
 				}
 				else{
@@ -142,6 +140,7 @@ function deleteWebshell(shell){
 			if(data.type == "success"){
 				swal("删除成功!", "webshell已成功删除", "success");
 				webshellList();
+				webshellTotal();
 			}else{
 				swal("删除失败!", data.info, "error");
 				webshellList();
@@ -160,6 +159,11 @@ function fun_scriptCategory(){
 	}else{
 		ul.attr('class', 'dom-hidden');
 	}
+}
+function webshellTotal(){
+	$.get("/RootApi/webshell/total",function(data){
+		$(".webshell-totol").text(data)
+	})
 }
 webshellList();
 addWebShell();
