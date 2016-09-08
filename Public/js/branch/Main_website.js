@@ -122,14 +122,15 @@ function addWebShell(){
 function showWebshellInfo(){
 	$(".table tbody tr").each(function(index,item){
     	$(item).find("td:first").click(function(){
+			for(var i = 0;i < 4;i++){
+				if($(".nav-justified:first li span").eq(i).text() == $(this).text()){
+					$('.bs-example-modal-lg').modal();
+					$(".nav-justified:first li").eq(i).find("a").click()
+					return false;
+				}
+			}
 			if($(".nav-justified:first li").length < 4){
 				var webshellManagementLen = ($(".nav-justified:first li").length+1);
-				for(var i = 0;i < 4;i++){
-					if($(".nav-justified:first li span").eq(i).text() == $(this).text()){
-						swal("展开失败", "您已经打开此站点的控制器，请勿重复打开", "warning");
-						return false;
-					}
-				}
 				$(".nav-justified:first").append('\
 				<li role="presentation">\
 					<a href="#webshell' + webshellManagementLen + '" id="webshell-tab' + webshellManagementLen + '" role="tab" data-toggle="tab" aria-controls="webshell' + webshellManagementLen + '" aria-expanded="false">' + myFun.parseURL($(this).text()).host + '</a>\
@@ -171,7 +172,6 @@ function showWebshellInfo(){
 					$(this).tab('show')
 				})
 				$('a#webshell-tab' + webshellManagementLen).click();
-				// $('#websiteInfo').click();
 			}else{
 				swal("展开失败", "显示空间不够，请关闭一个Tab", "warning");
 			}
