@@ -34,10 +34,10 @@ div.col-xs-9{
 						width:55%;
 						cursor: pointer;
 					}
-					&:nth-of-type(3){
+					&:nth-of-type(2){
 						width: 4%;
 					}
-					&:nth-of-type(4){
+					&:nth-of-type(3){
 						width: 8%;
 					}
 					&:last-of-type{
@@ -96,6 +96,37 @@ div.col-xs-9{
 	}
 	.nav-justified{
 		margin-bottom: 20px;
+		li button{
+			position: absolute;
+		    top: 0;
+		    right: 0;
+		    padding: 9.6px 10px;
+		    color: #b7bcc8;
+		    background-color: transparent;
+		    border: 0;
+		    line-height: 0;
+		    outline: none;
+			span{
+				top: 0;
+				zoom:1.3
+			}
+			&:hover{
+				background-color: #eee;
+				color: #23527c;
+			}
+		}
+	}
+	.modal-body table{
+		line-height: 1.8;
+		tr{
+			td:first-of-type{
+				width: 150px;
+			}
+			td:last-of-type{
+				word-break:break-all;
+				word-wrap:break-word;
+			}
+		}
 	}
 }
 .sweet-alert{

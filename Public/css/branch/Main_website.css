@@ -27,10 +27,10 @@ div.col-xs-9 .table tbody tr td:first-of-type {
   width: 55%;
   cursor: pointer;
 }
-div.col-xs-9 .table tbody tr td:nth-of-type(3) {
+div.col-xs-9 .table tbody tr td:nth-of-type(2) {
   width: 4%;
 }
-div.col-xs-9 .table tbody tr td:nth-of-type(4) {
+div.col-xs-9 .table tbody tr td:nth-of-type(3) {
   width: 8%;
 }
 div.col-xs-9 .table tbody tr td:last-of-type {
@@ -91,6 +91,35 @@ div.col-xs-9 .button-info-refresh span {
 }
 div.col-xs-9 .nav-justified {
   margin-bottom: 20px;
+}
+div.col-xs-9 .nav-justified li button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 9.6px 10px;
+  color: #b7bcc8;
+  background-color: transparent;
+  border: 0;
+  line-height: 0;
+  outline: none;
+}
+div.col-xs-9 .nav-justified li button span {
+  top: 0;
+  zoom: 1.3;
+}
+div.col-xs-9 .nav-justified li button:hover {
+  background-color: #eee;
+  color: #23527c;
+}
+div.col-xs-9 .modal-body table {
+  line-height: 1.8;
+}
+div.col-xs-9 .modal-body table tr td:first-of-type {
+  width: 150px;
+}
+div.col-xs-9 .modal-body table tr td:last-of-type {
+  word-break: break-all;
+  word-wrap: break-word;
 }
 .sweet-alert {
   padding: 17px 44px;

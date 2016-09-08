@@ -23,7 +23,7 @@ $(document).ready(function($){
 		}
 });
 var myFun = {
-	base64:{
+	base64:{	//base64编码解码
 		table:[
 	            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
 	            'I', 'J', 'K', 'L', 'M', 'N', 'O' ,'P',
@@ -133,7 +133,7 @@ var myFun = {
 	        return this.UTF8ToUTF16(res.join(''));
 	    }
 	},
-	parseURL:function(url){
+	parseURL:function(url){ 	//URL各部分提取
 		var a =  document.createElement('a');
 	    a.href = url;
 	    return {
@@ -160,10 +160,20 @@ var myFun = {
 	        segments: a.pathname.replace(/^\//,'').split('/')
 	    };
 	},
-	substr:function(dom,len){
+	substr:function(dom,len){ 	//字符串长度截取，多余字符串用...代替
 		$(dom).each(function(index,item){
 		    var webshellUrlText = $(item).text();
 		    if(webshellUrlText.length > len) $(item).text(webshellUrlText.substr(0,len) + '...');
 		})
+	},
+	getRandomString:function(len){	//随机出len长度字符串
+	    len = len || 32;
+	    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'; // 默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1
+	    var maxPos = $chars.length;
+	    var pwd = '';
+	    for(i = 0; i < len; i++) {
+	        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+	    }
+	    return pwd;
 	}
 };

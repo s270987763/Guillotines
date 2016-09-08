@@ -22,7 +22,35 @@ function webshellList(){
 			$(".list-page").text(page);
 			window.location = "#"+page;
 			for(var i = 0;i < json.info.length;i++){
-				$(".table tbody").append('<tr><th>' + (i+1) + '</th><td class="webshell-url" data-url="' + myFun.base64.decode(json.info[i].url) + '" data-toggle="modal" data-target=".bs-example-modal-lg">' + myFun.base64.decode(json.info[i].url) + '</td><td class="webshell-pwd" style="display:none">' + json.info[i].password + '</td><td>' + json.info[i].category + '</td><td>' + json.info[i].time.split(" ")[0] + '</td><td class="click-dropdown"><div class="btn-group"><button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button><ul class="dropdown-menu pull-right"><li><a><span class="glyphicon glyphicon-edit"></span>编辑</a></li><li><a><span class="glyphicon glyphicon-eye-open"></span>浏览</a></li><li onClick="deleteWebshell(this)"><a><span class="glyphicon glyphicon-trash"></span>删除</a></li></ul></div></td>');
+				$(".table tbody").append('\
+					<tr>\
+						<th>' + (i+1) + '</th>\
+						<td class="webshell-url" data-url="' + myFun.base64.decode(json.info[i].url) + '" data-toggle="modal" data-target=".bs-example-modal-lg">' + myFun.base64.decode(json.info[i].url) + '</td>\
+						<td>' + json.info[i].category + '</td>\
+						<td data-time="' + json.info[i].time + '">' + json.info[i].time.split(" ")[0] + '</td>\
+						<td class="webshell-pwd" style="display:none">' + json.info[i].password + '</td>\
+						<td class="webshell-ip" style="display:none">' + json.info[i].ip + '</td>\
+						<td class="webshell-address" style="display:none">' + json.info[i].address + '</td>\
+						<td class="webshell-br" style="display:none">' + json.info[i].br + '</td>\
+						<td class="webshell-pr" style="display:none">' + json.info[i].pr + '</td>\
+						<td class="click-dropdown">\
+							<div class="btn-group">\
+								<button class="glyphicon glyphicon-th-list" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>\
+								<ul class="dropdown-menu pull-right">\
+									<li>\
+										<a><span class="glyphicon glyphicon-edit"></span>编辑</a>\
+									</li>\
+									<li>\
+										<a><span class="glyphicon glyphicon-eye-open"></span>浏览</a>\
+									</li>\
+									<li onClick="deleteWebshell(this)">\
+										<a><span class="glyphicon glyphicon-trash"></span>删除</a>\
+									</li>\
+								</ul>\
+							</div>\
+						</td>\
+					</tr>\
+				');
 			}
 			myFun.substr(".webshell-url","80");
 			showWebshellInfo();
@@ -130,11 +158,15 @@ function showWebshellInfo(){
 				}
 			}
 			if($(".nav-justified:first li").length < 4){
-				var webshellManagementLen = ($(".nav-justified:first li").length+1);
+				var webshellManagementLen = myFun.getRandomString(10);
+				var webshellDomain = myFun.parseURL($(item).find("td:first").attr('data-url'));
 				$(".nav-justified:first").append('\
 				<li role="presentation">\
-					<a href="#webshell' + webshellManagementLen + '" id="webshell-tab' + webshellManagementLen + '" role="tab" data-toggle="tab" aria-controls="webshell' + webshellManagementLen + '" aria-expanded="false">' + myFun.parseURL($(this).text()).host + '</a>\
+					<a href="#webshell' + webshellManagementLen + '" id="webshell-tab' + webshellManagementLen + '" role="tab" data-toggle="tab" aria-controls="webshell' + webshellManagementLen + '" aria-expanded="false">' + webshellDomain.host + '</a>\
 					<span style="display:none">' + $(this).text() + '</span>\
+					<button onClick="closeWebshellTab(this)">\
+						<span class="glyphicon glyphicon-remove"></span>\
+					</button>\
 				</li>');
 				$(".webshellManagementContent").append('\
 				<div role="tabpanel" class="tab-pane fade" id="webshell' + webshellManagementLen + '" aria-labelledby="webshell-tab' + webshellManagementLen + '">\
@@ -154,7 +186,89 @@ function showWebshellInfo(){
 					</ul>\
 					<div class="tab-content">\
 						<div role="tabpanel" class="tab-pane fade active in" id="websiteInfo' + webshellManagementLen + '" aria-labelledby="website-info' + webshellManagementLen + '">\
-							websiteInfo\
+							<table>\
+								<tr>\
+									<td>\
+										<span class="iconfont">&#xe606;</span>\
+										<b><span>网站地址：</span></b>\
+									</td>\
+									<td>\
+										<i><a href="' + webshellDomain.protocol +'://'+ webshellDomain.host + webshellDomain.port + '" target="_blank">' + webshellDomain.protocol +'://'+ webshellDomain.host + webshellDomain.port + '</a></i>\
+									</td>\
+								</tr>\
+								<tr>\
+									<td>\
+										<span class="iconfont">&#xe606;</span>\
+										<b><span>WebShell地址：</span></b>\
+									</td>\
+									<td>\
+										<i><a href="'+ $(item).find("td:first").attr("data-url") +'" target="_blank">'+ $(item).find("td:first").attr("data-url") +'</a></i>\
+									</td>\
+								</tr>\
+								<tr>\
+									<td>\
+										<span class="iconfont">&#xe600;</span>\
+										<b><span>WebShell密码：</span></b>\
+									</td>\
+									<td>\
+										<i>'+ $(item).find("td.webshell-pwd").text() +'</i>\
+									</td>\
+								</tr>\
+								<tr>\
+									<td>\
+										<span class="iconfont">&#xe604;</span>\
+										<b><span>网站所属类型：</span></b>\
+									</td>\
+									<td>\
+										<i>'+ $(item).find("td:eq(1)").text() +'</i>\
+									</td>\
+								</tr>\
+								<tr>\
+									<td>\
+										<span class="iconfont">&#xe605;</span>\
+										<b><span>网站IP：</span></b>\
+									</td>\
+									<td>\
+										<i>'+ $(item).find("td.webshell-ip").text() +'</i>\
+									</td>\
+								</tr>\
+								<tr>\
+									<td>\
+										<span class="iconfont">&#xe603;</span>\
+										<b><span>网站归属地：</span></b>\
+									</td>\
+									<td>\
+										<i>'+ $(item).find("td.webshell-address").text() +'</i>\
+									</td>\
+								</tr>\
+								<tr>\
+									<td>\
+										<span class="iconfont">&#xe602;</span>\
+										<b><span>百度权重：</span></b>\
+									</td>\
+									<td>\
+										<i>'+ $(item).find("td.webshell-br").text() +'</i>\
+									</td>\
+								</tr>\
+								<tr>\
+									<td>\
+										<span class="iconfont">&#xe607;</span>\
+										<b><span>谷歌权重：</span></b>\
+									</td>\
+									<td>\
+										<i>'+ $(item).find("td.webshell-pr").text() +'</i>\
+									</td>\
+								</tr>\
+								<tr>\
+									<td>\
+										<span class="iconfont">&#xe601;</span>\
+										<b><span>项目创建时间：</span></b>\
+									</td>\
+									<td>\
+										<i>2016-09-06 13:25:04</i>\
+									</td>\
+								</tr>\
+							</table>\
 						</div>\
 						<div role="tabpanel" class="tab-pane fade" id="fileManagement' + webshellManagementLen + '" aria-labelledby="file-management' + webshellManagementLen + '">\
 							fileManagement\
@@ -224,6 +338,15 @@ function webshellTotal(){
 	$.get("/RootApi/webshell/total",function(data){
 		$(".webshell-totol").text(data)
 	})
+}
+function closeWebshellTab(dom){
+	if($(dom).parents("ul").find("li").length != 1){
+		var tabIndex = $(dom).parent("li").index();
+		$(dom).parent("li").remove();
+		$(".webshellManagementContent>div").eq(tabIndex).remove();
+	}else{
+		swal("关闭失败", "目前Tab空间只有一个webshell", "warning");
+	}
 }
 webshellList();
 addWebShell();
